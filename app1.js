@@ -1,85 +1,91 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const User = require('./models/user');
-const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const path = require('path');
+const express = require("express");
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const User = require("./model/user");
+const bodyParser = require("body-parser");
+const jwt = require("jsonwebtoken");
+const path = require("path");
+
 const app = express();
 const port = 3000;
 
-const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
+const JWT_SECRET =
+  "sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk"; // Replace with your actual JWT secret key
 
-app.use('/', express.static(path.join(__dirname, 'public')));
+// Serve static files from the 'public' directory
+app.use("/", express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
- 
-mongoose.connect('mongodb://127.0.0.1:27017/registerdb', { useNewUrlParser: true, useUnifiedTopology: true});
 
-app.post('/api/login', async (req, res) => {
-	const { username, password } = req.body
-	const user = await User.findOne({ username }).lean()
+// Connect to MongoDB
+mongoose.connect("mongodb://127.0.0.1:27017/registerdb", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-	if (!user) {
-		return res.json({ status: 'error', error: 'Invalid username/password' })
-	}
+// Handle user login
+app.post("/api/login", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username }).lean();
 
-	if (await bcrypt.compare(password, user.password)) {
-		// the username, password combination is successful
+  if (!user) {
+    return res.json({ status: "error", error: "Invalid username/password" });
+  }
 
-		const token = jwt.sign(
-			{
-				id: user._id,
-				username: user.username
-			},
-			JWT_SECRET
-		)
+  if (await bcrypt.compare(password, user.password)) {
+    const token = jwt.sign(
+      {
+        id: user._id,
+        username: user.username,
+      },
+      JWT_SECRET
+    );
 
-		return res.json({ status: 'ok', data: token })
-	}
+    return res.json({ status: "ok", data: token });
+  }
 
-	res.json({ status: 'error', error: 'Invalid username/password' })
-})
+  res.json({ status: "error", error: "Invalid username/password" });
+});
 
-app.post('/api/register',async (req,res) =>{
-  
-  const {username, email, password:plainTextPassword} = req.body;
+// Handle user registration
+app.post("/api/register", async (req, res) => {
+  const { username, email, password: plainTextPassword } = req.body;
 
-  // console.log(await bcrypt.hash(password, 10));
-  if (!username || typeof username !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid username' })
-	}
+  if (!username || typeof username !== "string") {
+    return res.json({ status: "error", error: "Invalid username" });
+  }
 
-	if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid password' })
-	}
-  if (!email || typeof email !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid email' })
-	}
-	if (plainTextPassword.length < 5) {
-		return res.json({
-			status: 'error',
-			error: 'Password too small. Should be atleast 6 characters'
-		})
-	}
-  const password = await bcrypt.hash(plainTextPassword, 10);  
+  if (!plainTextPassword || typeof plainTextPassword !== "string") {
+    return res.json({ status: "error", error: "Invalid password" });
+  }
+
+  if (!email || typeof email !== "string") {
+    return res.json({ status: "error", error: "Invalid email" });
+  }
+
+  if (plainTextPassword.length < 6) {
+    return res.json({
+      status: "error",
+      error: "Password should be at least 6 characters",
+    });
+  }
+
+  const password = await bcrypt.hash(plainTextPassword, 10);
 
   try {
-    const response = await User.create({
+    await User.create({
       username,
       email,
-      password
-    })
-  }
-  catch(error){
-    if(error.code === 11000){
-      return res.json({ status: 'error', error: 'Username already in use'})
+      password,
+    });
+  } catch (error) {
+    if (error.code === 11000) {
+      return res.json({ status: "error", error: "Username already in use" });
     }
-    throw error
-    
+    throw error;
   }
 
-  res.json({status: 'ok'});
-}  );
+  res.json({ status: "ok" });
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
