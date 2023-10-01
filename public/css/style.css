@@ -1,5 +1,7 @@
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+/* Reset some default styles and set font-family to Poppins */
 * {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -7,39 +9,45 @@
   box-sizing: border-box;
 }
 
+/* Styling for the body element */
 body {
-  background: linear-gradient(110deg, #016a70, #a2c579) !important;  
-  overflow-x: hidden;
+  /* Background gradient */
+  background: linear-gradient(110deg, #016a70, #a2c579);
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-.card p,
-h1 {
+/* Styling for paragraphs inside cards */
+.card p {
   font-weight: 300;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
+/* Styling for list items */
 li {
   font-size: 1.2rem;
 }
 
-/* Font Awesome icons */
+/* Styling for Font Awesome icons */
 .fas {
   margin-left: 1.2rem;
 }
 
-/* Navbar styles */
-.navbar.navbar-light.bg-light {
-  /* background-color: #016A70 !important; */
-  background: linear-gradient(110deg, #016a70, #a2c579) !important;
+/* Styling for the navigation bar */
+.navbar-light.bg-light {
+  background: linear-gradient(110deg, #016a70, #a2c579);
 }
-.navbar.navbar-light.bg-light .navbar-nav .nav-link,
-.navbar.navbar-light.bg-light .navbar-brand {
-  color: white !important; /* White color for navbar text */
+
+/* Styling for navbar links and brand */
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-brand {
+  color: white; /* Text color */
   cursor: pointer;
   font-family: monospace;
   font-size: larger;
   font-weight: 700;
 }
-/* Navbar links and hover animation */
+
+/* Styling for navbar links */
 .navbar-nav .nav-link {
   position: relative;
   text-decoration: none;
@@ -48,7 +56,7 @@ li {
   font-weight: 500;
 }
 
-/* Underline animation */
+/* Styling for navbar link hover effect */
 .navbar-nav .nav-link::before {
   content: "";
   position: absolute;
@@ -61,29 +69,34 @@ li {
   transform-origin: left;
 }
 
-/* Hover effect */
 .navbar-nav .nav-link:hover::before {
   width: 100%;
   transform-origin: right;
 }
+
+/* Styling for navbar link hover text color */
 .navbar .navbar-nav .nav-link.nav-item:hover {
-  color: #ffffdd !important;
+  color: #ffffdd;
 }
-/* CSS for decreasing navbar height */
+
+/* Navbar transition effect */
 .navbar {
   transition: transform 0.7s ease-in-out;
 }
 
+/* Styling for navbar brand */
 .navbar-brand {
-  padding: 0 15px !important;
-  line-height: 25px !important;
+  padding: 0 15px;
+  line-height: 25px;
 }
 
+/* Styling for navbar links */
 .navbar-nav .nav-link {
-  padding: 5px 15px !important;
-  line-height: 25px !important;
+  padding: 5px 15px;
+  line-height: 25px;
 }
-/* .landing-section */
+
+/* Styling for the landing section */
 .landing-section {
   padding-top: 9rem;
   height: 1000px;
@@ -92,86 +105,100 @@ li {
   font-weight: 700;
 }
 
-/* Set a minimum width for the left and right sections */
+/* Styling for landing page elements */
 .landing-page {
-  min-width: 300px; /* Adjust the minimum width as needed */
+  min-width: 300px;
 }
+
+/* Styling for the animated text */
 .type {
   font-family: monospace;
   color: #0000;
-  letter-spacing: 0.15em; /* Adjust as needed */
+  letter-spacing: 0.15em;
+  /* Background gradient animation for text */
   background: linear-gradient(-90deg, #ffffdd 5px, #0000 0) 10px 0,
     linear-gradient(#ffffdd 0 0) 0 0;
   background-size: calc(var(--n) * 1ch) 200%;
   -webkit-background-clip: padding-box, text;
   background-clip: padding-box, text;
   background-repeat: no-repeat;
+  /* Animation for text */
   animation: b 0.7s infinite steps(1),
     t calc(var(--n) * 0.15s) steps(var(--n)) forwards;
 }
+
+/* Adjust text for small screens */
 @media screen and (max-height: 600px) {
   .type {
     letter-spacing: 0.1rem;
   }
 }
 
+/* Keyframe animations for the animated text */
 @keyframes t {
   from {
     background-size: 0 200%;
   }
 }
+
 @keyframes b {
   50% {
     background-position: 0 -100%, 0 0;
   }
 }
-/* cards section */
+
+/* Styling for cards */
 .card {
-  /* background: linear-gradient(110deg, #016a70, #a2c579) !important; */
-  background-color: #2d37214d !important;
-  color: #ffffdd !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add transition properties */
+  background-color: #2d37214d;
+  color: #ffffdd;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   margin-bottom: 10em;
 }
 
+/* Hover effect for cards */
 .card:hover {
-  transform: scale(1.01); /* Increase size by 5% when hovering */
-  box-shadow: 0 0 17px rgba(0, 0, 0, 0.7); /* Add a shadow when hovering */
+  transform: scale(1.01);
+  box-shadow: 0 0 17px rgba(0, 0, 0, 0.7);
 }
 
+/* Styling for card text */
 .card-text {
-  color: #ffffdd !important;
-  font-weight: 300;
+  color: #ffffdd;
+  font-weight: 400;
 }
 
-.about-sec{
+/* Styling for the about section */
+.about-sec {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+/* Styling for about cards */
 .aboutcard {
   width: 500px;
   height: 404px;
   color: #ffffdd;
-  /* background: linear-gradient(110deg, #016a70, #a2c579) !important; */
-  background-color: #485c317b !important;
+  background-color: #485c317b;
   transition: all 0.4s;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.705);
   font-size: 14px;
   padding: 0 11px;
   font-weight: 300;
-  margin: 9rem 2rem ;
+  margin: 9rem 2rem;
 }
 
+/* Hover effect for about cards */
 .aboutcard:hover {
   border-radius: 15px;
   cursor: pointer;
   transform: scale(1.2);
-  box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.705);
   background: rgb(103, 151, 255);
 }
 
+/* Styling for the first content within about cards */
 .first-content {
   height: 100%;
   width: 100%;
@@ -183,11 +210,13 @@ li {
   border-radius: 15px;
 }
 
+/* Hover effect for the first content within about cards */
 .aboutcard:hover .first-content {
   height: 0px;
   opacity: 0;
 }
 
+/* Styling for the second content within about cards */
 .second-content {
   height: 0%;
   width: 100%;
@@ -201,14 +230,15 @@ li {
   transform: rotate(90deg) scale(-1);
 }
 
+/* Hover effect for the second content within about cards */
 .aboutcard:hover .second-content {
   opacity: 1;
   height: 100%;
-  font-size: .9rem;
+  font-size: 0.9rem;
   transform: rotate(0deg);
 }
 
-/* footer and contactus-section */
+/* Styling for the footer */
 .footer {
   line-height: 1.5;
   font-family: "Poppins", sans-serif;
@@ -219,10 +249,12 @@ li {
   justify-content: space-around;
 }
 
+/* Remove list bullets */
 ul {
   list-style: none;
 }
 
+/* Styling for footer column headings */
 .footer-col h4 {
   font-size: 1em;
   color: #ffffff;
@@ -231,6 +263,8 @@ ul {
   font-weight: 500;
   position: relative;
 }
+
+/* Styling for the line under footer column headings */
 .footer-col h4::before {
   content: "";
   position: absolute;
@@ -241,10 +275,13 @@ ul {
   box-sizing: border-box;
   width: 50px;
 }
+
+/* Styling for list items in the footer */
 .footer-col ul li {
   color: white;
 }
 
+/* Styling for social media links in the footer */
 .footer-col .social-links a {
   display: inline-block;
   height: 40px;
@@ -257,14 +294,16 @@ ul {
   color: #ffffff;
   transition: all 0.5s ease;
 }
+
+/* Hover effect for social media links in the footer */
 .footer-col .social-links a:hover {
-  transform: scale(1.1); /* Increase size by 5% when hovering */
+  transform: scale(1.1);
   box-shadow: 0 0 17px rgba(0, 0, 0, 0.7);
   color: #24262b;
   background-color: #ffffff;
 }
 
-/*responsive*/
+/* Responsive styling for smaller screens */
 @media (max-width: 767px) {
   .footer-col {
     margin-bottom: 30px;
