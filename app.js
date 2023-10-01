@@ -10,7 +10,7 @@ const app = express();
 const port = 3000;
 
 const JWT_SECRET =
-  "sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk"; // Replace with your actual JWT secret key
+  "sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk";
 
 // Serve static files from the 'public' directory
 app.use("/", express.static(path.join(__dirname, "public")));
