@@ -42,11 +42,11 @@ logoutLink.addEventListener("click", () => {
 });
 
 // JavaScript to hide and show navbar on scroll
-let prevScrollPos = window.pageYOffset;
+let prevScrollPos = window.scrollY;
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
-  const currentScrollPos = window.pageYOffset;
+  const currentScrollPos = window.scrollY;
   if (prevScrollPos > currentScrollPos) {
     navbar.style.transform = "translateY(0)";
   } else {
