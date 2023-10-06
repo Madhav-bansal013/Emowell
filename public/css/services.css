@@ -1,58 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
 body {
-	background: linear-gradient(-45deg, #ccee52, #a2c579, #016a70, #23d5ab);
-	background-size: 400% 400%;
-    color: #ffffdd;
-	animation: gradient 15s ease infinite;
-	height: 100vh;
+  background: linear-gradient(-45deg, #ccee52, #a2c579, #016a70, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-h1 {
-    text-align: center;
+.servicess {
+  background: #2d37214d;
+  width: 90%;
+  max-width: 600px;
+  margin: 100px auto 0;
+  border-radius: 10px;
+  padding: 30px;
+  height: 500px;
+  min-height: 200px;
 }
-
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+.servicess h1 {
+  font-size: 25px;
+  color: #e4f9f5;
+  font-weight: 600;
+  border-bottom: 1.37px solid #333;
+  padding-bottom: 30px;
+  text-align: center;
 }
-
-p {
-    font-size: 16px;
+.question-sec {
+  padding: 20px 0;
 }
-
-input[type="radio"] {
-    margin-right: 10px;
+.question-sec h2 {
+  font-size: 18px;
+  color: #e4f9f5;
+  font-weight: 600;
 }
-
-label {
-    font-weight: bold;
+.btn {
+  background: #e4f9f5;
+  color: #222;
+  font-weight: 600;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
-
-input[type="submit"] {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.btn:hover {
+  background: #119e71;
+  color: #ffffdd;
 }
-
-#result {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 20px;
+#next-btn {
+  background: #119e71;
+  color: #ffffdd;
+  font-weight: 500;
+  width: 150px;
+  border: 0;
+  padding: 10px;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: none;
 }
