@@ -83,6 +83,9 @@ body {
   cursor: pointer;
   display: none;
 }
+#next-btn:hover{
+background: #06f3a874;
+}
 
 /* meter-designing */
 .meter-container {
@@ -110,4 +113,12 @@ body {
   transform: translate(-50%, -50%);
   font-size: 16px;
   font-weight: bold;
+}
+@keyframes fillMeter {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--stressLevel, 0%);
+  }
 }

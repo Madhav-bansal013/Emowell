@@ -144,18 +144,19 @@ function handleNextBtn() {
 
 function showStressLevel() {
   resetstate();
-  const stressLevel = ((stresslevel / (4 * 10)) * 100);
+  const stressLevel = (stresslevel / (4 * 10)) * 100;
   quesEl.innerHTML = "Your stress level: " + stressLevel.toFixed(2) + "%";
 
-  meterFill.style.width = stressLevel + "%";
+  // Set the custom property for the animation
+  meterFill.style.setProperty("--stressLevel", stressLevel + "%");
   meterLabel.textContent = stressLevel.toFixed(2) + "%";
 
   nextBtn.innerHTML = "Analysis again";
   nextBtn.style.display = "block";
   meterContainer.style.display = "block"; // Display the meter container
 
-  // Reset the stress level to 0
-  stresslevel = 0;
+  // Apply the animation class
+  meterFill.style.animation = "fillMeter 2s ease-in-out forwards"; // Adjust the duration as needed
 }
 
 nextBtn.addEventListener("click", () => {
