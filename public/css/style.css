@@ -18,10 +18,10 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  z-index: 9999; /* Ensure it's above other content */
+  justify-content: center; 
+  align-items: center; 
+  background-color: rgba(0, 0, 0, 0.75); 
+  z-index: 9999; 
 }
 .loader {
   width: 80px;
@@ -34,14 +34,14 @@ body {
   top: 0;
   padding: 0;
   margin: 0;
-  color: #c8b6ff;
+  color: #ffffdd;
   animation: text_713 3.5s ease both infinite;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
 }
 
 .load {
-  background-color: #9a79ff;
+  background-color: #369e74;
   border-radius: 50px;
   display: block;
   height: 16px;

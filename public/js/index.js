@@ -1,4 +1,19 @@
-// Show the loader when the page starts loading
+//LOADER
+const loaderTextOptions = ["Mind Matters", "EmoWell Loading", "Stay Calm"];
+
+// Function to change loader text dynamically
+function changeLoaderText() {
+  const loaderText = document.getElementById("loader-text");
+  let currentIndex = 0;
+
+  setInterval(() => {
+    loaderText.textContent = loaderTextOptions[currentIndex];
+    currentIndex = (currentIndex + 1) % loaderTextOptions.length;
+  }, 600); // Change text every second
+}
+
+changeLoaderText();
+
 function showLoader() {
   const loader = document.createElement("div");
   loader.className = "loader";
@@ -7,7 +22,6 @@ function showLoader() {
     <span class="load"></span>
   `;
 
-  // Append the loader to the loader container
   const loaderContainer = document.getElementById("loader-container");
   loaderContainer.appendChild(loader);
 
@@ -15,11 +29,9 @@ function showLoader() {
 }
 
 window.addEventListener("load", () => {
-  // Set a minimum display time of 2 seconds for the loader
   setTimeout(() => {
-    // Hide the loader after at least 2 seconds
     hideLoader();
-  }, 3000); // Adjust the delay time (in milliseconds) as needed
+  }, 2200);
 });
 
 // Function to hide the loader
@@ -27,8 +39,7 @@ function hideLoader() {
   const loaderContainer = document.getElementById("loader-container");
   loaderContainer.style.display = "none";
 }
-
-
+//LOADER ENDS
 const isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
 // Function to display the user profile and logout options
