@@ -18,10 +18,10 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  background-color: rgba(0, 0, 0, 0.75); 
-  z-index: 9999; 
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
 }
 .loader {
   width: 80px;
@@ -168,7 +168,7 @@ li {
   cursor: pointer;
   font-family: monospace;
   font-size: larger;
-  font-weight: 700;
+  font-weight: 600;
 }
 /* Navbar links and hover animation */
 .navbar-nav .nav-link {
@@ -179,6 +179,22 @@ li {
   font-weight: 500;
 }
 
+.dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #ffffdd; 
+  font-weight: bolder;
+  width: 250px;
+}
+
+.dropdown-item {
+  font-weight: bold;
+  color: #ffffdd;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffdd;
+}
 /* Underline animation */
 .navbar-nav .nav-link::before {
   content: "";
@@ -223,9 +239,8 @@ li {
   font-weight: 700;
 }
 
-/* Set a minimum width for the left and right sections */
 .landing-page {
-  min-width: 300px; /* Adjust the minimum width as needed */
+  min-width: 300px; 
 }
 .type {
   font-family: monospace;
@@ -258,16 +273,15 @@ li {
 }
 /* cards section */
 .card {
-  /* background: linear-gradient(110deg, #016a70, #a2c579) !important; */
-  background-color: #2d37214d !important;
+  background-color: #485c317b !important;
   color: #ffffdd !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add transition properties */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
   margin-bottom: 10em;
 }
 
 .card:hover {
-  transform: scale(1.01); /* Increase size by 5% when hovering */
-  box-shadow: 0 0 17px rgba(0, 0, 0, 0.7); /* Add a shadow when hovering */
+  transform: scale(1.01); 
+  box-shadow: 0 0 17px rgba(0, 0, 0, 0.7); 
 }
 
 .card-text {
@@ -284,7 +298,6 @@ li {
   width: 500px;
   height: 404px;
   color: #ffffdd;
-  /* background: linear-gradient(110deg, #016a70, #a2c579) !important; */
   background-color: #485c317b !important;
   transition: all 0.4s;
   border-radius: 10px;
@@ -356,7 +369,7 @@ ul {
 
 .footer-col h4 {
   font-size: 1em;
-  color: #ffffff;
+  color: #ffffdd;
   text-transform: capitalize;
   margin-bottom: 35px;
   font-weight: 500;
@@ -373,7 +386,7 @@ ul {
   width: 50px;
 }
 .footer-col ul li {
-  color: white;
+  color: #ffffdd;
 }
 
 .footer-col .social-links a {
@@ -389,7 +402,7 @@ ul {
   transition: all 0.5s ease;
 }
 .footer-col .social-links a:hover {
-  transform: scale(1.1); /* Increase size by 5% when hovering */
+  transform: scale(1.1); 
   box-shadow: 0 0 17px rgba(0, 0, 0, 0.7);
   color: #24262b;
   background-color: #ffffff;

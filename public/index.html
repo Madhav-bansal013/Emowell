@@ -51,9 +51,15 @@
           <li class="nav-item">
             <a class="nav-link" href="#about">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
-          </li>
+          <div class="dropdown" style="position: relative;">
+            <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Services
+            </a>
+            <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+              <a class="dropdown-item" href="services.html">Analyse your stress</a>
+              <a class="dropdown-item" href="community.html">Community</a>
+            </div>
+          </div>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact Us</a>
           </li>
@@ -277,6 +283,12 @@
           </ul>
         </div>
       </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p style="color: white;">&copy; 2023 EmoWell. All Rights Reserved.</p>
+          </div>
+        </div>
     </footer>
     <!-- scripts -->
     <script src="js/index.js"></script>
