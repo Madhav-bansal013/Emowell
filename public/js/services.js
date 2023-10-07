@@ -1,68 +1,116 @@
+const quesEl = document.getElementById("question");
+const ansBtn = document.getElementById("ans-button");
+const nextBtn = document.getElementById("next-btn");
+const meterContainer = document.querySelector(".meter-container");
+const meterFill = document.getElementById("meter-fill");
+const meterLabel = document.getElementById("meter-label");
+
+let currentQuesindex = 0;
+let stresslevel = 0;
+let stressScore = 0;
+
 const questions = [
   {
-    question: "Aur kya haal 1?",
+    question: "You feel that too many demands are being made on you",
     answers: [
-      { text: "Boht bhadiya", score: 5 },
-      { text: "Bhadiya", score: 4 },
-      { text: "Theeka thak", score: 3 },
-      { text: "Bekaar", score: 2 },
-      { text: "Boht bekaar", score: 1 },
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
     ],
   },
   {
-    question: "Aur kya haal 2?",
+    question: "You are irritable or grouchy",
     answers: [
-      { text: "Boht bhadiya", score: 5 },
-      { text: "Bhadiya", score: 4 },
-      { text: "Theeka thak", score: 3 },
-      { text: "Bekaar", score: 2 },
-      { text: "Boht bekaar", score: 1 },
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
     ],
   },
   {
-    question: "Aur kya haal 3?",
+    question: "You have too many things to do",
     answers: [
-      { text: "Boht bhadiya", score: 5 },
-      { text: "Bhadiya", score: 4 },
-      { text: "Theeka thak", score: 3 },
-      { text: "Bekaar", score: 2 },
-      { text: "Boht bekaar", score: 1 },
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
     ],
   },
   {
-    question: "Aur kya haal 4?",
+    question: "You feel lonely or isolated",
     answers: [
-      { text: "Boht bhadiya", score: 5 },
-      { text: "Bhadiya", score: 4 },
-      { text: "Theeka thak", score: 3 },
-      { text: "Bekaar", score: 2 },
-      { text: "Boht bekaar", score: 1 },
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
     ],
   },
   {
-    question: "Aur kya haal 5?",
+    question: "You feel tired",
     answers: [
-      { text: "Boht bhadiya", score: 5 },
-      { text: "Bhadiya", score: 4 },
-      { text: "Theeka thak", score: 3 },
-      { text: "Bekaar", score: 2 },
-      { text: "Boht bekaar", score: 1 },
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+
+  {
+    question: "You fear you may not manage to attain your goals",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You have too many decisions to make",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You feel frustrated",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You feel tense",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "Your problems seem to be piling up",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
     ],
   },
 ];
 
-const quesEl = document.getElementById("question");
-const ansBtn = document.getElementById("ans-button");
-const nextBtn = document.getElementById("next-btn");
-
-let currentQuesindex = 0;
-let stresslevel = 0;
 function statanalysing() {
   currentQuesindex = 0;
   stresslevel = 0;
+  meterContainer.style.display = "none";
   nextBtn.innerHTML = "NEXT";
   showQuestions();
 }
+
 function showQuestions() {
   resetstate();
   let currentQues = questions[currentQuesindex];
@@ -75,14 +123,14 @@ function showQuestions() {
     btn.classList.add("btn");
     ansBtn.appendChild(btn);
     btn.addEventListener("click", () => {
-      selectAns(answer.score);
+      stressScore = answer.score;
+      nextBtn.style.display = "block";
     });
   });
 }
 
 function selectAns(score) {
   stresslevel += score;
-  nextBtn.style.display = "block";
 }
 
 function handleNextBtn() {
@@ -93,14 +141,11 @@ function handleNextBtn() {
     showStressLevel();
   }
 }
+
 function showStressLevel() {
   resetstate();
-  const stressLevel = 100 - (stresslevel / (5*5))*100;
+  const stressLevel = (stresslevel / (4 * 10)) * 100;
   quesEl.innerHTML = "Your stress level: " + stressLevel + "%";
-
-  const meterContainer = document.querySelector(".meter-container");
-  const meterFill = document.getElementById("meter-fill");
-  const meterLabel = document.getElementById("meter-label");
 
   meterFill.style.width = stressLevel + "%";
   meterLabel.textContent = stressLevel.toFixed(2) + "%";
@@ -111,26 +156,22 @@ function showStressLevel() {
 
   // Reset the stress level to 0
   stresslevel = 0;
-
-  // Hide the meter on "Analysis again" click
-  nextBtn.addEventListener("click", () => {
-    meterContainer.style.display = "none"; // Hide the meter container
-  });
 }
 
 nextBtn.addEventListener("click", () => {
   if (currentQuesindex < questions.length) {
+    selectAns(stressScore);
     handleNextBtn();
   } else {
     statanalysing();
   }
 });
+
 function resetstate() {
   nextBtn.style.display = "none";
   while (ansBtn.firstChild) {
     ansBtn.removeChild(ansBtn.firstChild);
   }
 }
-// JavaScript code to update the meter
 
 statanalysing();
