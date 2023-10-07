@@ -144,8 +144,8 @@ function handleNextBtn() {
 
 function showStressLevel() {
   resetstate();
-  const stressLevel = Math.round((stresslevel / (4 * 10)) * 100);
-  quesEl.innerHTML = "Your stress level: " + stressLevel + "%";
+  const stressLevel = (stresslevel / (4 * 10)) * 100;
+  quesEl.innerHTML = "Your stress level: " + stressLevel.toFixed(2) + "%";
 
   meterFill.style.width = stressLevel + "%";
   meterLabel.textContent = stressLevel.toFixed(2) + "%";
