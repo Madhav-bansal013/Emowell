@@ -1,4 +1,34 @@
-// Check if the user is logged in
+// Show the loader when the page starts loading
+function showLoader() {
+  const loader = document.createElement("div");
+  loader.className = "loader";
+  loader.innerHTML = `
+    <span class="loader-text">EMOWELL</span>
+    <span class="load"></span>
+  `;
+
+  // Append the loader to the loader container
+  const loaderContainer = document.getElementById("loader-container");
+  loaderContainer.appendChild(loader);
+
+  loader.style.display = "block";
+}
+
+window.addEventListener("load", () => {
+  // Set a minimum display time of 2 seconds for the loader
+  setTimeout(() => {
+    // Hide the loader after at least 2 seconds
+    hideLoader();
+  }, 3000); // Adjust the delay time (in milliseconds) as needed
+});
+
+// Function to hide the loader
+function hideLoader() {
+  const loaderContainer = document.getElementById("loader-container");
+  loaderContainer.style.display = "none";
+}
+
+
 const isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
 // Function to display the user profile and logout options
