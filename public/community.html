@@ -4,9 +4,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EmoWell</title>
     <link rel="stylesheet" href="/Emowell/public/css/community.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
   </head>
   <body>
-    <p>Community</p>
+    <h1 class="title">Chat-section</h1>
+    <div class="main">
+      <div class="name">
+        <i class="far fa-user"></i>
+        <input type="text" id="name-input" value="anonymous" class="name-input" maxlength="20" />
+      </div>
+      <ul class="message-container" id="message-container">
+        <li class="message-left">
+          <p class="message">
+            lorem ipsum
+            <span>bluebird ⚪ 26 july 10:40</span>
+          </p>
+        </li>
+        <li class="message-right">
+          <p class="message">
+            lorem ipsum
+            <span>bluebird ⚪ 26 july 10:40</span>
+          </p>
+        </li>
+        <li class="message-feedback">
+          <p class="feedback" id="feedback">killer is typing a message</p>
+        </li>
+      </ul>
+      <form class="message-form" id="message-form">
+        <input
+          type="text"
+          name="message"
+          id="message-input"
+          class="message-input"
+        />
+        <div class="v-divider"></div>
+        <button type="submit" class="send-button">
+          send <span><i class="fas fa-paper-plane"></i></span>
+        </button>
+      </form>
+    </div>
+    <h3 class="clients-total" id="clients-total">Total clients: 2</h3>
     <script src="/Emowell/public/js/community.js"></script>
   </body>
 </html>
