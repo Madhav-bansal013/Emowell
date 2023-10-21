@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EmoWell</title>
+    <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #618264; /* EmoWell background color */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20%;
+    }
+
+    section .reveal {
+      position: relative;
+      color: #D0E7D2; /* EmoWell text color */
+      font-size: 1.75rem;
+      padding: 0 10px;
+      font-weight: 500;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: 0.5s;
+      transition-delay: 0.5s;
+    }
+
+    section .reveal.active {
+      transform: scaleX(1);
+      transition-delay: 0s;
+    }
+
+    section .reveal:nth-child(2) {
+      font-weight: 300;
+      font-size: 1.25rem;
+      letter-spacing: 2px;
+      display: inline-block;
+      margin-top: 5px;
+    }
+
+    section .reveal:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #B0D9B1; /* EmoWell accent color */
+      transform-origin: right;
+      transition: 0.5s;
+      transition-delay: 0s;
+    }
+
+    section .reveal:nth-child(2):before {
+      background: #79AC78; /* EmoWell secondary accent color */
+    }
+
+    section .reveal.active:before {
+      transform: scaleX(0);
+      transition-delay: 0.5s;
+    }
+
+    section img {
+      position: relative;
+      display: block;
+      margin: 40px 0 0 10px;
+      max-width: 300px;
+      opacity: 0;
+      transition: 0.5s;
+      left: -300px;
+    }
+
+    section img.active {
+      opacity: 1;
+      left: 0;
+    }
+   
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  z-index: 9999;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: #72d173; 
+  transition: width 0.3s; 
+}
+
+  </style>
+  </head>
+  <body>
+    <section>
+      <div>
+        <h2 class="reveal" style="text-align: center;">Our Mission</h2>
+        <h3 class="reveal"> At EmoWell, we believe that emotional well-being is
+          a cornerstone
+          of a happy and fulfilling life, especially during the often
+          tumultuous teenage years.
+          Our mission is to provide teenagers with
+          the tools, knowledge, and support they need to navigate the
+          complexities of their emotions and build resilience.
+        </h3>
+        <img
+          src="https://res.cloudinary.com/therealsk/image/upload/v1593002824/random_it0m7s.svg"
+          alt style="margin-left: 30%;" />
+      </div>
+    </section>
+    <section>
+      <div>
+        <h2 class="reveal" style="text-align: center;">Who We Are</h2>
+        <h3 class="reveal">EmoWell is a dedicated team of individuals passionate
+          about mental
+          health and committed to making a positive impact on the lives of
+          teenagers. Our collective expertise in technology, psychology, and
+          education drives us to create a safe and empowering space for
+          adolescents to explore their emotions and find strength in their
+          vulnerabilities.
+        </h3>
+        <img
+          src="https://res.cloudinary.com/therealsk/image/upload/v1593002824/random_it0m7s.svg"
+          alt style="margin-left: 30%;" />
+      </div>
+    </section>
+    <section>
+      <div>
+        <h2 class="reveal" style="text-align: center;">What We Believe</h2>
+        <h3 class="reveal"> We believe in the power of self-awareness and
+          self-acceptance.
+          Understanding your emotions is the first step towards managing
+          them effectively. We also understand that seeking help when needed
+          is a sign of strength, not weakness. EmoWell is here to support
+          teenagers on their journey to emotional well-being.
+        </h3>
+        <img
+          src="https://res.cloudinary.com/therealsk/image/upload/v1593002824/random_it0m7s.svg"
+          alt style="margin-left: 30%;" />
+      </div>
+    </section>
+    <section>
+      <div>
+        <h2 class="reveal" style="text-align: center;">What We Offer</h2>
+        <h3 class="reveal"> EmoWell provides a tailored platform for teenagers,
+          offering
+          Personalized Guidance: Receive expert-backed insights, strategies, and
+          recommendations based on your assessment results, designed to enhance
+          your emotional well-being.
+          Safe and Judgment-Free Space: Our platform fosters a nurturing,
+          non-judgmental environment, allowing you to freely express your
+          emotions, fears, and hopes while being your authentic self.
+        </h3>
+        <img
+          src="https://res.cloudinary.com/therealsk/image/upload/v1593002824/random_it0m7s.svg"
+          alt style="margin-left: 30%;" />
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <h2 class="reveal" style="text-align: center;">Let's Foster Emotional Well-Being, Together</h2>
+        <h3 class="reveal"> Join Us on this Journey
+          We invite teenagers, parents, educators, and anyone passionate
+          about supporting the emotional well-being of young individuals
+          to join us on this important journey. Together, we can empower
+          the next generation with the emotional resilience they need to
+          thrive.
+        </h3>
+        <img
+          src="https://res.cloudinary.com/therealsk/image/upload/v1593002824/random_it0m7s.svg"
+          alt style="margin-left: 30%;" />
+      </div>
+    </section>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script>
+    const reveal = gsap.utils.toArray(".reveal");
+    reveal.forEach((text, i) => {
+      ScrollTrigger.create({
+        trigger: text,
+        toggleClass: "active",
+        start: "top 90%",
+        end: "top 20%",
+      });
+    });
+
+    const images = gsap.utils.toArray("img");
+    images.forEach((img, i) => {
+      ScrollTrigger.create({
+        trigger: img,
+        toggleClass: "active",
+        start: "top 90%",
+        end: "top 20%",
+      });
+    });
+  window.addEventListener("scroll", () => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = window.scrollY;
+    const progress = (scrolled / scrollableHeight) * 100;
+    document.getElementById("progress-bar").style.width = `${progress}%`;
+  });
+
+  </script>
+  </body>
+</html>
