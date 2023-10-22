@@ -7,7 +7,7 @@ const nameInput = document.getElementById("name-input");
 const messageForm = document.getElementById("message-form");
 const messageInput = document.getElementById("message-input");
 
-const messageTone = new Audio("../message-tone.mp3");
+const messageTone = new Audio("../message-sound.mp3");
 
 messageForm.addEventListener("submit", (e) => {
   e.preventDefault();
