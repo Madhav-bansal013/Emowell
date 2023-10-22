@@ -17,21 +17,22 @@
         <input type="text" id="name-input" value="anonymous" class="name-input" maxlength="20" />
       </div>
       <ul class="message-container" id="message-container">
-        <li class="message-left">
+        <!-- <li class="message-left">
           <p class="message">
             lorem ipsum
             <span>bluebird ⚪ 26 july 10:40</span>
           </p>
-        </li>
-        <li class="message-right">
+        </li> -->
+        <!-- <li class="message-right">
           <p class="message">
             lorem ipsum
             <span>bluebird ⚪ 26 july 10:40</span>
           </p>
-        </li>
-        <li class="message-feedback">
+        </li> -->
+        <!-- <li class="message-feedback">
           <p class="feedback" id="feedback">killer is typing a message</p>
-        </li>
+          
+        </li> -->
       </ul>
       <form class="message-form" id="message-form">
         <input
@@ -46,7 +47,14 @@
         </button>
       </form>
     </div>
-    <h3 class="clients-total" id="clients-total">Total clients: 2</h3>
+    <h3 class="clients-total" id="clients-total"></h3>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"
+      integrity="sha512-Q1f3TS3vSt1jQ8AwP2OuenztnLU6LwxgyyYOG1jgMW/cbEMHps/3wjvnl1P3WTrF3chJUWEoxDUEjMxDV8pujg=="
+      crossorigin="anonymous"
+    ></script>
     <script src="js/community.js"></script>
   </body>
 </html>
