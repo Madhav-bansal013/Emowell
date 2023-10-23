@@ -181,7 +181,7 @@ li {
 
 .dropdown-menu {
   background-color: rgba(0, 0, 0, 0.4);
-  color: #ffffdd; 
+  color: #ffffdd;
   font-weight: bolder;
   width: 250px;
 }
@@ -231,15 +231,19 @@ li {
   line-height: 25px !important;
 }
 
-.user .dropdown-toggle::after { 
-  content: none; 
-} 
+.user .dropdown-toggle::after {
+  content: none;
+}
 
-/* .navbar #username{
-  color: white;
-  border: 1px solid black;
-  border-radius: 50%;
-} */
+.navbar #username {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.2rem 1.5rem;
+  border-radius: 20px;
+}
+.navbar #username:hover {
+  color: #485c317b;
+  transition: none !important; /*underline animation ni hat rha sala */
+}
 
 /* .landing-section */
 .landing-section {
@@ -251,7 +255,7 @@ li {
 }
 
 .landing-page {
-  min-width: 300px; 
+  min-width: 300px;
 }
 .type {
   font-family: monospace;
@@ -286,14 +290,14 @@ li {
 .card {
   background-color: #485c317b !important;
   color: #ffffdd !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   margin-bottom: 10em;
   margin-top: 20em;
 }
 
 .card:hover {
-  transform: scale(1.01); 
-  box-shadow: 0 0 17px rgba(0, 0, 0, 0.7); 
+  transform: scale(1.01);
+  box-shadow: 0 0 17px rgba(0, 0, 0, 0.7);
 }
 
 .card-text {
@@ -303,11 +307,11 @@ li {
 /* CSS for the new curved header section */
 .curved-header-section {
   position: relative;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .curved-header-section h2 {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 3em;
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -338,7 +342,7 @@ li {
 }
 
 .curved-header-section section#jumbotron:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -370,7 +374,7 @@ li {
 }
 
 .curved-header-section section#body:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -401,7 +405,7 @@ section#welcome .content {
 }
 
 section#welcome:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -413,7 +417,7 @@ section#welcome:before {
 }
 
 /* footer and contactus-section */
-.footer{
+.footer {
   line-height: 1.5;
   font-family: "Poppins", sans-serif;
   background: linear-gradient(110deg, #143d3f, #81a156);
@@ -421,7 +425,6 @@ section#welcome:before {
 }
 
 .footer-main {
-
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -466,13 +469,13 @@ ul {
   transition: all 0.5s ease;
 }
 .footer-col .social-links a:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
   box-shadow: 0 0 17px rgba(0, 0, 0, 0.7);
   color: #24262b;
   background-color: #ffffff;
 }
 
-.contain{
+.contain {
   text-align: center;
   padding: 0;
   margin: 0 !important;
