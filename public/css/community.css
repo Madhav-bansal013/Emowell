@@ -1,25 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-:root {
-	--dark-color-a: #667aff;
-	--dark-color-b: #7386ff;
-	--light-color: #e6e9ff;
-	--success-color: #5cb85c;
-	--error-color: #d9534f;
-}
 
 * {
 	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
 	margin: 0;
 	padding: 0;
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-	background: var(--light-color);
-	margin: 20px;
-}
+	background: #618264;
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+  }
 
 ul {
 	list-style: none;
@@ -28,30 +22,50 @@ ul {
 a {
 	text-decoration: none;
 }
-
+label{
+	font-size: larger;
+	font-weight: 600;
+}
 .btn {
 	cursor: pointer;
 	padding: 5px 15px;
-	background: var(--light-color);
-	color: var(--dark-color-a);
+	background: #ffffdd;
+	color: #119e71;
 	border: 0;
+	font-weight: 700;
 	font-size: 17px;
+	border: none;
+	border-radius: 8px;
 }
-
+#leave-btn{
+	color: #d9534f;
+}
+#leave-btn:hover{
+	color: red;
+}
+#send-btn {
+	border-radius: 0 12px 12px 0;
+	border-left-style: solid; 
+	border-left-color: gray;
+	border-left-width: 1.5px;
+  }
+#send-btn:hover{
+	color:#618264;
+}
 /* Chat Page */
 
 .chat-container {
 	max-width: 1100px;
-	background: #fff;
 	margin: 30px auto;
 	overflow: hidden;
+	outline: none;
+	border: none;
+	border-radius: 20px;
 }
 
 .chat-header {
-	background: var(--dark-color-a);
-	color: #fff;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	background: #2d37214d;
+	color: #ffffdd;
 	padding: 15px;
 	display: flex;
 	align-items: center;
@@ -64,17 +78,18 @@ a {
 }
 
 .chat-sidebar {
-	background: var(--dark-color-b);
-	color: #fff;
+	background: #2d37214d;
+	color: #ffffdd;
 	padding: 20px 20px 60px;
 	overflow-y: scroll;
 }
 
 .chat-sidebar h2 {
 	font-size: 20px;
-	background: rgba(0, 0, 0, 0.1);
+	background: rgba(0, 0, 0, 0.2);
 	padding: 10px;
 	margin-bottom: 20px;
+	border-radius: 8px;
 }
 
 .chat-sidebar h3 {
@@ -89,31 +104,33 @@ a {
 	padding: 30px;
 	max-height: 500px;
 	overflow-y: scroll;
+	
 }
 
 .chat-messages .message {
 	padding: 10px;
 	margin-bottom: 15px;
-	background-color: var(--light-color);
-	border-radius: 5px;
+	background-color: #ffffdd;
+	border-radius: 8px;
 	overflow-wrap: break-word;
 }
 
 .chat-messages .message .meta {
 	font-size: 15px;
-	font-weight: bold;
-	color: var(--dark-color-b);
+	font-weight: 700;
+	color: #2d3721;
 	opacity: 0.7;
 	margin-bottom: 7px;
 }
 
 .chat-messages .message .meta span {
 	color: #777;
+	padding-left: 0.5rem;
 }
 
 .chat-form-container {
 	padding: 20px 30px;
-	background-color: var(--dark-color-a);
+	background-color: #2d37214d;
 }
 
 .chat-form-container form {
@@ -125,8 +142,14 @@ a {
 	padding: 5px;
 	height: 40px;
 	flex: 1;
+	outline: none;
+	border: none;
+	border-radius: 12px 0px 0px 12px;
 }
-
+.chat-form-container input[type='text']::placeholder{
+	color: #2d3721;
+	font-weight: 500;
+}
 /* Join Page */
 .join-container {
 	max-width: 500px;
@@ -137,14 +160,15 @@ a {
 .join-header {
 	text-align: center;
 	padding: 20px;
-	background: var(--dark-color-a);
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	background: #2d37214d;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 .join-main {
 	padding: 30px 40px;
-	background: var(--dark-color-b);
+	background: #2d37214d;
+	border-radius: 0 0 10px 10px; 
 }
 
 .join-main p {
@@ -165,6 +189,13 @@ a {
 	padding: 5px;
 	height: 40px;
 	width: 100%;
+	border: none;
+	outline: none;
+	border-radius: 12px;
+	font-weight: 500;
+}
+.join-main input[type='text']::placeholder{
+	color: #2d3721 ;
 }
 
 .join-main select {
@@ -172,11 +203,56 @@ a {
 	padding: 5px;
 	height: 40px;
 	width: 100%;
+	border: none;
+	outline: none;
+	font-weight: 500;
+	color: #2d3721;
+	border-radius: 12px;
 }
+/* Styling the select element */
+select {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	width: 100%;
+	border: none;
+	outline: none;
+	font-weight: 500;
+	color: #2d3721;
+	border-radius: 12px;
+	background-color: #fff; 
+  }
+  
+  /* Style the dropdown arrow */
+  select::-ms-expand {
+	display: none !important;
+  }
+  
+  /* Styling the dropdown list */
+  select option {
+	background-color: #fff; 
+	color: #2d3721; 
+	padding: 5px;
+	font-weight: 500;
+  }
+ 
+ 
+  select option:checked {
+	background-color: #618264; 
+	color: #fff; 
+  }
 
+  
 .join-main .btn {
 	margin-top: 20px;
 	width: 100%;
+	color: #2d3721;
+	transition: color 0.3s ease; 
+}
+
+.join-main .btn:hover {
+	background-color: #618264;
+	transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 @media (max-width: 700px) {
