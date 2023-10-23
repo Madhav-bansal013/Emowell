@@ -480,7 +480,16 @@ ul {
   padding: 0;
   margin: 0 !important;
 }
-
+/*Dialogflow-chatbot */
+df-messenger {
+  --df-messenger-bot-message: #878fac;
+  --df-messenger-button-titlebar-color: #a2c579;
+  --df-messenger-chat-background-color: #ffffdd;
+  --df-messenger-font-color: #ffffdd;
+  --df-messenger-send-icon: #a2c579;
+  --df-messenger-user-message: #479b3d;
+  --df-messenger-minimized-chat-close-icon-color:#479b3d;
+ }
 /*responsive*/
 @media (max-width: 767px) {
   .footer-col {
