@@ -40,47 +40,54 @@ function hideLoader() {
   loaderContainer.style.display = "none";
 }
 //LOADER ENDS
+
+// Check if the user is logged in (you can use sessionStorage for this)
 const isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
-// Function to display the user profile and logout options
 function showUserProfile(username) {
-  const userProfile = document.getElementById("user-profile");
   const usernameElement = document.getElementById("username");
-  const logoutButton = document.getElementById("logout");
-  const loginButton = document.getElementById("login");
-
-  userProfile.style.display = "block";
-  usernameElement.textContent = username;
-  logoutButton.style.display = "block";
-  loginButton.style.display = "none";
+  usernameElement.textContent = username[0].toUpperCase();
 }
 
-// Function to hide the user profile and logout options
-function hideUserProfile() {
-  const userProfile = document.getElementById("user-profile");
-  const logoutButton = document.getElementById("logout");
-  const loginButton = document.getElementById("login");
+// Function to update the navigation menu based on login status
+function updateNavigationMenu() {
+  const userIconLink = document.getElementById("user-icon");
+  const userDropdown = document.getElementById("login");
 
-  userProfile.style.display = "none";
-  logoutButton.style.display = "none";
-  loginButton.style.display = "block";
+  if (isLoggedIn) {
+    // User is logged in, show the dropdown icon
+    const username = sessionStorage.getItem("username");
+    userIconLink.style.display = "none";
+    userDropdown.style.display = "block";
+    showUserProfile(username);
+  } else {
+    // User is not logged in, show the user icon as a link
+    userIconLink.style.display = "block";
+    userDropdown.style.display = "none";
+  }
 }
 
-// Initialize the user profile based on login status
-if (isLoggedIn) {
-  const username = sessionStorage.getItem("username");
-  showUserProfile(username);
-} else {
-  hideUserProfile();
-}
-
-// Logout functionality
-const logoutLink = document.getElementById("logout-link");
-logoutLink.addEventListener("click", () => {
+///////////////////////
+function logout() {
   sessionStorage.removeItem("isLoggedIn");
   sessionStorage.removeItem("username");
-  hideUserProfile();
-});
+  const userIconLink = document.getElementById("user-icon");
+  const userDropdown = document.getElementById("login");
+  userIconLink.style.display = "block";
+  userDropdown.style.display = "none";
+}
+
+// Initialize the navigation menu based on login status
+updateNavigationMenu();
+
+// Add event listener to the logout link
+const logoutLink = document.getElementById("logout-link");
+if (logoutLink) {
+  logoutLink.addEventListener("click", () => {
+    // Call the logout function when the user clicks the logout link
+    logout();
+  });
+}
 
 // JavaScript to hide and show navbar on scroll
 let prevScrollPos = window.scrollY;

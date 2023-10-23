@@ -230,6 +230,17 @@ li {
   padding: 5px 15px !important;
   line-height: 25px !important;
 }
+
+.user .dropdown-toggle::after { 
+  content: none; 
+} 
+
+/* .navbar #username{
+  color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+} */
+
 /* .landing-section */
 .landing-section {
   padding-top: 9rem;
