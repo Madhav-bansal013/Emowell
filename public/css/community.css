@@ -255,7 +255,7 @@ select {
 	transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
 	.chat-main {
 		display: block;
 	}
@@ -263,4 +263,4 @@ select {
 	.chat-sidebar {
 		display: none;
 	}
-}
+} */
