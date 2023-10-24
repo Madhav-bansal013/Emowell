@@ -83,8 +83,8 @@ body {
   cursor: pointer;
   display: none;
 }
-#next-btn:hover{
-background: #06f3a874;
+#next-btn:hover {
+  background: #06f3a874;
 }
 
 /* meter-designing */
@@ -120,5 +120,34 @@ background: #06f3a874;
   }
   to {
     width: var(--stressLevel, 0%);
+  }
+}
+/* Media Query for Smaller Screens */
+@media (max-width: 600px) {
+  .servicess {
+    margin: 20px auto 10px;
+    padding: 10px;
+  }
+
+  .servicess h1 {
+    font-size: 22px;
+  }
+
+  .question-sec h2 {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 8px;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  #next-btn {
+    font-size: 16px;
+  }
+
+  .meter-container {
+    margin: 10px 0;
   }
 }
