@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const User = require("./model/user");
-const StressScore = require("./model/stressScore");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const path = require("path");
@@ -153,34 +152,6 @@ app.post("/api/register", async (req, res) => {
   }
 
   res.json({ status: "ok" });
-});
-
-app.post("/record-stress-score", async (req, res) => {
-  const { username, score } = req.body;
-
-  try {
-    const newStressScore = new StressScore({ username, score });
-    await newStressScore.save();
-    res.json({ message: "Stress score recorded successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to record stress score" });
-  }
-});
-
-app.get("/get-last-10-scores/:username", async (req, res) => {
-  const { username } = req.params;
-
-  try {
-    const scores = await StressScore.find({ username })
-      .sort({ timestamp: -1 })
-      .limit(10);
-
-    res.json(scores);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to retrieve stress scores" });
-  }
 });
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
