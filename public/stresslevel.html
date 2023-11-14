@@ -8,41 +8,80 @@
       body {
         margin: 0;
         font-family: "Arial", sans-serif;
-        background-color: #f0f0f0;
+        background-color: #618264;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
-
-      .container {
-        max-width: 600px;
-        margin: 20px auto;
-        background-color: #fff;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+      .dashboard-container {
+        display: flex;
+        max-width: 1200px;
+        margin: 20px;
       }
-
+  
+      .left{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
       #loadingIndicator {
         font-size: 18px;
         margin-bottom: 20px;
       }
-
+  
       canvas {
         width: 100%;
         height: auto;
+        max-width: 700px;
+      }
+      .user-info,
+      .recommendations {
+        flex: 1;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        margin-right: 20px; 
+        margin-top: 12px;
+      }
+  
+      .user-info h2,
+      .recommendations h2 {
+        margin-bottom: 10px;
       }
     </style>
   </head>
   <body>
     <div>
-      <!-- Loading indicator -->
-      <div id="loadingIndicator">Loading...</div>
+      <div class="dashboard-container">
+      <div class="left">
+        <div class="user-info">
+          <h2>User Information</h2>
+          <!--User's name and score here -->
+          <p id="userName">User Name</p>
+          <p id="userScore">Score: 0%</p>
+        </div>
+    
+        <!-- Recommendations and Resources -->
+        <div class="recommendations">
+          <h2>Recommendations & Resources</h2>
+          <p>Here you can find personalized recommendations and mental health resources.</p>
+        </div>
+      </div>
+        <!-- Loading indicator -->
+        <div id="loadingIndicator">Loading...</div>
 
-      <!-- Chart canvas -->
-      <canvas id="myChart" width="400" height="200"></canvas>
-    </div>
+        <!-- Chart canvas -->
+        <canvas id="myChart" width="400" height="200"></canvas>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
-    <script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+      <script>
       async function fetchStressLevelData() {
         try {
           const response = await fetch("/api/stresslevel", {
@@ -83,8 +122,8 @@
               {
                 label: "Stress Level",
                 data: data,
-                borderColor: "rgba(75, 192, 192, 1)",
-                borderWidth: 1,
+                borderColor: "rgba(0, 0, 0, 0.5)",
+                borderWidth: 3,
                 fill: false,
               },
             ],
@@ -100,6 +139,8 @@
                 title: {
                   display: true,
                   text: "Time",
+                  color:"black",
+                  fontWeight: '900',
                 },
               },
               y: {
@@ -107,7 +148,13 @@
                 title: {
                   display: true,
                   text: "Stress Level",
+                  color:"black",
+                  fontWeight: '900',
+                  fontSize: 28,
                 },
+                ticks:{
+                  color:"black",
+                }
               },
             },
           },
@@ -132,7 +179,11 @@
         }
       }
 
-      fetchDataAndDisplayChart();
+      fetchDataAndDisplayChart()  ;
+      const userNameElement = document.getElementById("userName");
+    const userScoreElement = document.getElementById("userScore");
+    userNameElement.textContent = "John Doe";
+    userScoreElement.textContent = "Score: 75%";
     </script>
-  </body>
-</html>
+    </body>
+  </html>
