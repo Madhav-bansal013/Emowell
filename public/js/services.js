@@ -161,7 +161,7 @@ function showStressLevel() {
     },
     body: JSON.stringify({
       username: enteredUsername,
-      score: stresslevel,
+      score: stressLevel,
       timestamp: timestamp.toISOString(), // Convert to ISO string format
     }),
   })
