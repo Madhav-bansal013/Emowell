@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const User = require("./model/user");
+const StressLevel = require("./model/stressLevelModel");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const path = require("path");
@@ -152,6 +153,43 @@ app.post("/api/register", async (req, res) => {
   }
 
   res.json({ status: "ok" });
+});
+
+// ...
+
+app.post("/api/savestresslevel", async (req, res) => {
+  try {
+    // Find the user based on the username
+    const user = await User.findOne({ username: req.body.username });
+
+    // Get the timestamp from the request body (assuming it is passed from the client)
+    const timestamp = req.body.timestamp || new Date(); // If not provided, use the current date and time
+
+    // Create a new stress level entry with the timestamp
+    const stressLevelEntry = new StressLevel({
+      username: user.username,
+      score: req.body.score,
+      timestamp: timestamp,
+    });
+
+    // Save the stress level entry to the database
+    await stressLevelEntry.save();
+
+    res.json({ status: 'ok', message: 'Stress level score saved to the database' });
+  } catch (error) {
+    console.error('Error saving stress level score:', error);
+    res.status(500).json({ status: 'error', error: 'Internal Server Error' });
+  }
+});
+
+app.get("/api/stresslevel", async (req, res) => {
+  try {
+    const stressLevelData = await StressLevel.find().sort({ timestamp: 1 });
+    res.json(stressLevelData);
+  } catch (error) {
+    console.error("Error fetching stress level data:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
