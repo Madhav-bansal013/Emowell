@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
 
     // User's password (String) is required
     password: { type: String, required: true },
-  },
+  }
   // {
   //   // Specify the collection name in the MongoDB database
   //   collection: "users",

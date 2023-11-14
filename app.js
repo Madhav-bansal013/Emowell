@@ -159,32 +159,43 @@ app.post("/api/register", async (req, res) => {
 
 app.post("/api/savestresslevel", async (req, res) => {
   try {
-    // Find the user based on the username
-    const user = await User.findOne({ username: req.body.username });
+    // Get the user's username from the token
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, JWT_SECRET);
+    const username = decodedToken.username;
 
-    // Get the timestamp from the request body (assuming it is passed from the client)
-    const timestamp = req.body.timestamp || new Date(); // If not provided, use the current date and time
-
-    // Create a new stress level entry with the timestamp
+    // Create a new stress level entry with the username
     const stressLevelEntry = new StressLevel({
-      username: user.username,
+      username: username,
       score: req.body.score,
-      timestamp: timestamp,
+      timestamp: req.body.timestamp || new Date(),
     });
 
     // Save the stress level entry to the database
     await stressLevelEntry.save();
 
-    res.json({ status: 'ok', message: 'Stress level score saved to the database' });
+    res.json({
+      status: "ok",
+      message: "Stress level score saved to the database",
+    });
   } catch (error) {
-    console.error('Error saving stress level score:', error);
-    res.status(500).json({ status: 'error', error: 'Internal Server Error' });
+    console.error("Error saving stress level score:", error);
+    res.status(500).json({ status: "error", error: "Internal Server Error" });
   }
 });
 
 app.get("/api/stresslevel", async (req, res) => {
   try {
-    const stressLevelData = await StressLevel.find().sort({ timestamp: 1 });
+    // Get the user's username from the token
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, JWT_SECRET);
+    const username = decodedToken.username;
+
+    // Fetch stress level data only for the logged-in user
+    const stressLevelData = await StressLevel.find({ username })
+      .sort({ timestamp: -1 })
+      .limit(10);
+
     res.json(stressLevelData);
   } catch (error) {
     console.error("Error fetching stress level data:", error);

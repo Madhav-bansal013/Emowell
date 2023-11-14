@@ -1,95 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stress Level Chart</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <!-- Chart canvas -->
-  <canvas id="myChart" width="400" height="200"></canvas>
-hello
-  <script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stress Level Chart</title>
+  </head>
+  <body>
+    <div>
+      <!-- Loading indicator -->
+      <div id="loadingIndicator">Loading...</div>
 
-    // Fetch data from the StressLevel collection
-   // Function to fetch stress level data from the server
-async function fetchStressLevelData() {
-  try {
-    const response = await fetch("/api/stresslevel", {
-      method: "GET", // Assuming your server supports GET for fetching data
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+      <!-- Chart canvas -->
+      <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch stress level data from the server");
-    }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+    <script>
+      async function fetchStressLevelData() {
+        try {
+          const response = await fetch("/api/stresslevel", {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
 
-    const stressLevelData = await response.json();
-    return stressLevelData;
-  } catch (error) {
-    console.error("Error fetching stress level data:", error);
-    return null;
-  }
-}
+          if (!response.ok) {
+            throw new Error(
+              "Failed to fetch stress level data from the server"
+            );
+          }
 
-// Function to prepare data for Chart.js
-function prepareChartData(stressLevelData) {
-  const labels = stressLevelData.map((entry) => entry.timestamp);
-  const data = stressLevelData.map((entry) => entry.score);
+          const stressLevelData = await response.json();
+          return stressLevelData;
+        } catch (error) {
+          console.error("Error fetching stress level data:", error);
+          return null;
+        }
+      }
 
-  return { labels, data };
-}
+      function prepareChartData(stressLevelData) {
+        const labels = stressLevelData.map((entry) => entry.timestamp);
+        const data = stressLevelData.map((entry) => entry.score);
+        return { labels, data };
+      }
 
-// Function to display the chart using Chart.js
-function displayChart(labels, data) {
-  const ctx = document.getElementById("stressLevelChart").getContext("2d");
+      function displayChart(labels, data) {
+        const ctx = document.getElementById("myChart").getContext("2d");
 
-  new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: "Stress Level",
-          data: data,
-          borderColor: "rgba(75, 192, 192, 1)",
-          borderWidth: 1,
-          fill: false,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        x: {
-          type: "time", // Assuming timestamps are Date objects
-          time: {
-            unit: "day", // Adjust as needed
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: labels.map((timestamp) => moment(timestamp)),
+            datasets: [
+              {
+                label: "Stress Level",
+                data: data,
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+                fill: false,
+              },
+            ],
           },
-        },
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
-}
+          options: {
+            scales: {
+              x: {
+                type: "time",
+                time: {
+                  unit: "day",
+                  tooltipFormat: "ll HH:mm",
+                },
+                title: {
+                  display: true,
+                  text: "Time",
+                },
+              },
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: "Stress Level",
+                },
+              },
+            },
+          },
+        });
+      }
 
-// Usage: Fetch data, prepare it, and display the chart
-async function fetchDataAndDisplayChart() {
-  const stressLevelData = await fetchStressLevelData();
+      async function fetchDataAndDisplayChart() {
+        const loadingIndicator = document.getElementById("loadingIndicator");
+        loadingIndicator.textContent = "Loading...";
 
-  if (stressLevelData) {
-    const { labels, data } = prepareChartData(stressLevelData);
-    displayChart(labels, data);
-  }
-}
+        const stressLevelData = await fetchStressLevelData();
+        if (stressLevelData) {
+          const { labels, data } = prepareChartData(stressLevelData);
+          console.log("Labels:", labels);
+          console.log("Data:", data);
+          displayChart(labels, data);
 
-// Call the function to fetch data and display the chart
-fetchDataAndDisplayChart();
+          // Hide loading indicator after displaying the chart
+          loadingIndicator.style.display = "none";
+        } else {
+          loadingIndicator.textContent = "Failed to fetch data";
+        }
+      }
 
-  </script>
-</body>
+      fetchDataAndDisplayChart();
+    </script>
+  </body>
 </html>

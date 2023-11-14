@@ -131,8 +131,6 @@ function showQuestions() {
 
 function selectAns(score) {
   stresslevel += score;
-
-
 }
 
 function handleNextBtn() {
@@ -148,32 +146,32 @@ function showStressLevel() {
   resetstate();
   const stressLevel = (stresslevel / (4 * 10)) * 100;
   quesEl.innerHTML = "Your stress level: " + stressLevel.toFixed(2) + "%";
-    // Get the user information from session storage
-    const enteredUsername = sessionStorage.getItem("username");
+  // Get the user information from session storage
+  const enteredUsername = sessionStorage.getItem("username");
 
-    // Get the current date and time
-    const timestamp = new Date();
-  
-    // Send a POST request to the server to save the stress level score
-    fetch("/api/savestresslevel", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({
-        username: enteredUsername,
-        score: stresslevel,
-        timestamp: timestamp.toISOString(), // Convert to ISO string format
-      }),
+  // Get the current date and time
+  const timestamp = new Date();
+
+  // Send a POST request to the server to save the stress level score
+  fetch("/api/savestresslevel", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({
+      username: enteredUsername,
+      score: stresslevel,
+      timestamp: timestamp.toISOString(), // Convert to ISO string format
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
     })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.error("Error saving stress level score:", error);
-      });
+    .catch((error) => {
+      console.error("Error saving stress level score:", error);
+    });
 
   // Set the custom property for the animation
   meterFill.style.setProperty("--stressLevel", stressLevel + "%");
