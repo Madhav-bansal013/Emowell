@@ -34,31 +34,66 @@
       canvas {
         width: 100%;
         height: auto;
-        max-width: 700px;
+        max-width: 800px;
       }
-      .user-info,
-      .recommendations {
-        flex: 1;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 12px;
-        margin-right: 20px; 
-        margin-top: 12px;
+      .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-right: 7em;
       }
-  
-      .user-info h2,
-      .recommendations h2 {
-        margin-bottom: 10px;
-      }
+
+.cards .red {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cards .blue {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.cards .green {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 160px;
+  width: 250px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.cards .card p.tip {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.cards .card p.second-text {
+  font-size: .7em;
+}
+
+.cards .card:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+}
     </style>
   </head>
   <body>
     <div>
       <div class="dashboard-container">
       <div class="left">
-        <div class="user-info">
+        <div class="cards">
+        <div class="card red">
           <h2>User Information</h2>
           <!--User's name and score here -->
           <p id="userName">User Name</p>
@@ -66,10 +101,16 @@
         </div>
     
         <!-- Recommendations and Resources -->
-        <div class="recommendations">
-          <h2>Recommendations & Resources</h2>
-          <p>Here you can find personalized recommendations and mental health resources.</p>
+        <div class="card blue">
+          <h2>Recommendations</h2>
+          <p>Here you can find personalized recommendations.</p>
         </div>
+        <div class="card green">
+          <h2>Resources</h2>
+          <p>Here you will find mental health resources</p>
+          <p>lorem uiebcbwcoiwec woci coiwc qw cioswcqcipwqsc qwcoiqw cqwspciqw b</p>
+        </div>
+      </div>
       </div>
         <!-- Loading indicator -->
         <div id="loadingIndicator">Loading...</div>
@@ -182,8 +223,8 @@
       fetchDataAndDisplayChart()  ;
       const userNameElement = document.getElementById("userName");
     const userScoreElement = document.getElementById("userScore");
-    userNameElement.textContent = "John Doe";
-    userScoreElement.textContent = "Score: 75%";
+    userNameElement.textContent = "Saumitra";
+    userScoreElement.textContent = "Stress-Score: 30%";
     </script>
     </body>
   </html>
