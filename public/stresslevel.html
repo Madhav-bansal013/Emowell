@@ -4,226 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stress Level Chart</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: "Arial", sans-serif;
-        background-color: #618264;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-  
-      .dashboard-container {
-        display: flex;
-        max-width: 1200px;
-        margin: 20px;
-      }
-  
-      .left{
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
-      #loadingIndicator {
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
-  
-      canvas {
-        width: 100%;
-        height: auto;
-        max-width: 800px;
-      }
-      .cards {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-right: 7em;
-      }
-
-.cards .red {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.cards .blue {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.cards .green {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.cards .card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  height: 160px;
-  width: 250px;
-  border-radius: 10px;
-  color: #fff;
-  cursor: pointer;
-  transition: 400ms;
-}
-
-.cards .card p.tip {
-  font-size: 1em;
-  font-weight: 700;
-}
-
-.cards .card p.second-text {
-  font-size: .7em;
-}
-
-.cards .card:hover {
-  transform: scale(1.1, 1.1);
-}
-
-.cards:hover > .card:not(:hover) {
-  filter: blur(10px);
-  transform: scale(0.9, 0.9);
-}
-    </style>
+    <link rel="stylesheet" href="./css/stresslevel.css" />
   </head>
   <body>
-    <div>
-      <div class="dashboard-container">
+    <div class="dashboard-container">
       <div class="left">
         <div class="cards">
-        <div class="card red">
-          <h2>User Information</h2>
-          <!--User's name and score here -->
-          <p id="userName">User Name</p>
-          <p id="userScore">Score: 0%</p>
-        </div>
-    
-        <!-- Recommendations and Resources -->
-        <div class="card blue">
-          <h2>Recommendations</h2>
-          <p>Here you can find personalized recommendations.</p>
-        </div>
-        <div class="card green">
-          <h2>Resources</h2>
-          <p>Here you will find mental health resources</p>
+          <!-- User Information Card -->
+          <div class="card red">
+            <h2>User Information</h2>
+            <p id="userName">User Name</p>
+            <p id="userScore">Score: 0%</p>
+          </div>
+
+          <!-- Recommendations Card -->
+          <div class="card blue">
+            <h2>Recommendations</h2>
+            <p>
+              Personalized recommendations text goes here.<br />
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+            </p>
+          </div>
+
+          <!-- Resources Card -->
+          <div class="card green">
+            <h2>Resources</h2>
+            <p>Mental health resources text goes here.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+          </div>
         </div>
       </div>
-      </div>
-        <!-- Loading indicator -->
-        <div id="loadingIndicator">Loading...</div>
 
-        <!-- Chart canvas -->
-        <canvas id="myChart" width="400" height="200"></canvas>
-      </div>
+      <!-- Loading indicator -->
+      <div id="loadingIndicator">Loading...</div>
 
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/moment"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
-      <script>
-      async function fetchStressLevelData() {
-        try {
-          const response = await fetch("/api/stresslevel", {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          });
+      <!-- Chart canvas -->
+      <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
 
-          if (!response.ok) {
-            throw new Error(
-              "Failed to fetch stress level data from the server"
-            );
-          }
-
-          const stressLevelData = await response.json();
-          return stressLevelData;
-        } catch (error) {
-          console.error("Error fetching stress level data:", error);
-          return null;
-        }
-      }
-
-      function prepareChartData(stressLevelData) {
-        const labels = stressLevelData.map((entry) => entry.timestamp);
-        const data = stressLevelData.map((entry) => entry.score);
-        return { labels, data };
-      }
-
-      function displayChart(labels, data) {
-        const ctx = document.getElementById("myChart").getContext("2d");
-
-        new Chart(ctx, {
-          type: "line",
-          data: {
-            labels: labels.map((timestamp) => moment(timestamp)),
-            datasets: [
-              {
-                label: "Stress Level",
-                data: data,
-                borderColor: "rgba(0, 0, 0, 0.5)",
-                borderWidth: 3,
-                fill: false,
-              },
-            ],
-          },
-          options: {
-            scales: {
-              x: {
-                type: "time",
-                time: {
-                  unit: "day",
-                  tooltipFormat: "ll HH:mm",
-                },
-                title: {
-                  display: true,
-                  text: "Time",
-                  color:"black",
-                  fontWeight: '900',
-                },
-              },
-              y: {
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: "Stress Level",
-                  color:"black",
-                  fontWeight: '900',
-                  fontSize: 28,
-                },
-                ticks:{
-                  color:"black",
-                }
-              },
-            },
-          },
-        });
-      }
-
-      async function fetchDataAndDisplayChart() {
-        const loadingIndicator = document.getElementById("loadingIndicator");
-        loadingIndicator.textContent = "Loading...";
-
-        const stressLevelData = await fetchStressLevelData();
-        if (stressLevelData) {
-          const { labels, data } = prepareChartData(stressLevelData);
-          console.log("Labels:", labels);
-          console.log("Data:", data);
-          displayChart(labels, data);
-
-          // Hide loading indicator after displaying the chart
-          loadingIndicator.style.display = "none";
-        } else {
-          loadingIndicator.textContent = "Failed to fetch data";
-        }
-      }
-
-      fetchDataAndDisplayChart()  ;
-      const userNameElement = document.getElementById("userName");
-    const userScoreElement = document.getElementById("userScore");
-    userNameElement.textContent = "Saumitra";
-    userScoreElement.textContent = "Stress-Score: 30%";
-    </script>
-    </body>
-  </html>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+    <script src="./js/stresslevel.js"></script>
+  </body>
+</html>
