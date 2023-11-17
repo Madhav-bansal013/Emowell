@@ -122,9 +122,18 @@ function showQuestions() {
     btn.innerHTML = answer.text;
     btn.classList.add("btn");
     ansBtn.appendChild(btn);
+
     btn.addEventListener("click", () => {
+      const buttons = document.querySelectorAll(".btn");
+      buttons.forEach((button) => {
+        item.style.backgroundColor = "";
+        item.style.color = "";
+      });
+
       stressScore = answer.score;
       nextBtn.style.display = "block";
+      btn.style.backgroundColor = "#119e71";
+      btn.style.color = "#ffffdd";
     });
   });
 }
