@@ -124,14 +124,15 @@ function showQuestions() {
     ansBtn.appendChild(btn);
 
     btn.addEventListener("click", () => {
-      const buttons = document.querySelectorAll(".btn");
-      buttons.forEach((button) => {
-        item.style.backgroundColor = "";
-        item.style.color = "";
-      });
-
       stressScore = answer.score;
       nextBtn.style.display = "block";
+
+      const buttons = document.querySelectorAll(".btn");
+      buttons.forEach((button) => {
+        button.style.backgroundColor = "";
+        button.style.color = "";
+      });
+
       btn.style.backgroundColor = "#119e71";
       btn.style.color = "#ffffdd";
     });
