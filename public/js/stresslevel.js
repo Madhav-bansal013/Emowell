@@ -99,4 +99,10 @@ async function fetchDataAndDisplayChart() {
   }
 }
 
+function backToHome() {
+  // Assuming your home page URL is "index.html"
+  window.location.href = "index.html";
+}
+
+
 fetchDataAndDisplayChart();

@@ -1,89 +1,141 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #618264;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-      body {
-        margin: 0;
-        font-family: "Arial", sans-serif;
-        background-color: #618264;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+.dashboard-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px;
+}
 
-      .dashboard-container {
-        display: flex;
-        max-width: 1200px;
-        margin: 20px;
-      }
+.left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
-      .left {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
+#loadingIndicator {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 
-      #loadingIndicator {
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
+canvas {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+}
 
-      canvas {
-        width: 100%;
-        height: auto;
-        max-width: 800px;
-      }
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-right: 2em;
+}
 
-      .cards {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-right: 2em;
-      }
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 250px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+  overflow: hidden;
+}
 
-      .cards .card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        width: 250px;
-        border-radius: 10px;
-        color: #fff;
-        cursor: pointer;
-        transition: all 0.3s;
-        overflow: hidden;
-      }
+.red {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-      .cards .red {
-        background-color: rgba(0, 0, 0, 0.5);
-      }
+.blue {
+  background-color: rgba(0, 0, 0, 0.7);
+}
 
-      .cards .blue {
-        background-color: rgba(0, 0, 0, 0.7);
-      }
+.green {
+  background-color: rgba(0, 0, 0, 0.6);
+}
 
-      .cards .green {
-        background-color: rgba(0, 0, 0, 0.6);
-      }
+.card p {
+  margin: 10px;
+  word-wrap: break-word; /* Allow text to wrap */
+}
 
-      .cards .card p {
-        margin: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
+.card:hover {
+  transform: scale(1.1, 1.1);
+  height: auto;
+}
 
-      .cards .card:hover {
-        transform: scale(1.1, 1.1);
-        height: auto;
-      }
+.cards:hover > .card:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+}
 
-      .cards:hover > .card:not(:hover) {
-        filter: blur(10px);
-        transform: scale(0.9, 0.9);
-      }
+.card:hover p {
+  overflow: visible;
+  text-overflow: unset;
+  white-space: normal;
+}
 
-      .cards .card:hover p {
-        overflow: visible;
-        text-overflow: unset;
-        white-space: normal;
-      }
+.back-to-home-btn {
+  text-decoration: none;
+  position: relative;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: #fff;
+  width: 9em;
+  height: 3em;
+  line-height: 2em;
+  text-align: center;
+  background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+  background-size: 300%;
+  border-radius: 30px;
+  z-index: 1;
+  margin-left: 50px; /* Add left margin */
+}
+
+.back-to-home-btn:hover {
+  animation: ani 8s linear infinite;
+  border: none;
+}
+
+@keyframes ani {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 400%;
+  }
+}
+
+.back-to-home-btn:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+  background-size: 400%;
+  border-radius: 35px;
+  transition: 1s;
+}
+
+.back-to-home-btn:hover::before {
+  filter: blur(20px);
+}
+
+.back-to-home-btn:active {
+  background: linear-gradient(32deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+}
