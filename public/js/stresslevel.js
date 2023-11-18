@@ -5,7 +5,7 @@ async function fetchStressLevelData() {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-    }); 
+    });
 
     if (!response.ok) {
       throw new Error("Failed to fetch stress level data from the server");
@@ -96,12 +96,14 @@ async function fetchDataAndDisplayChart() {
     const recommendationCard = document.querySelector(".card.blue p");
 
     if (score < 50) {
-      recommendationCard.textContent = "You are experiencing normal stress levels.";
-    } else if(score >=50 && score <85){
-      recommendationCard.textContent = "You are experiencing Moderate stress. It's important to seek support and take care of your mental health.";
-    }
-    else{
-      recommendationCard.textContent = "You are experiencing Severe stress. It's urgent to seek a doctor.";
+      recommendationCard.textContent =
+        "You are experiencing normal stress levels.";
+    } else if (score >= 50 && score < 85) {
+      recommendationCard.textContent =
+        "You are experiencing Moderate stress. It's important to seek support and take care of your mental health.";
+    } else {
+      recommendationCard.textContent =
+        "You are experiencing Severe stress. It's urgent to seek a doctor.";
     }
 
     // Hide loading indicator after displaying the chart
@@ -115,6 +117,5 @@ function backToHome() {
   // Assuming your home page URL is "index.html"
   window.location.href = "index.html";
 }
-
 
 fetchDataAndDisplayChart();
