@@ -86,4 +86,24 @@
         overflow: visible;
         text-overflow: unset;
         white-space: normal;
+      } 
+
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }
+    
+      .tooltip:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        padding: 8px;
+        border-radius: 4px;
+        z-index: 1;
+        bottom: 125%; /* Position the tooltip above the text */
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: pre-line; /* Preserve line breaks */
       }
