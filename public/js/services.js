@@ -211,4 +211,10 @@ function resetstate() {
   }
 }
 
+function backToHome() {
+  // Assuming your home page URL is "index.html"
+  window.location.href = "index.html";
+}
+
+
 statanalysing();

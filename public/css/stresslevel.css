@@ -1,109 +1,148 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #618264;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-      body {
-        margin: 0;
-        font-family: "Arial", sans-serif;
-        background-color: #618264;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+.dashboard-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px;
+}
 
-      .dashboard-container {
-        display: flex;
-        max-width: 1200px;
-        margin: 20px;
-      }
+.left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
-      .left {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-      }
+#loadingIndicator {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 
-      #loadingIndicator {
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
+canvas {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+}
 
-      canvas {
-        width: 100%;
-        height: auto;
-        max-width: 800px;
-      }
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-right: 2em;
+}
 
-      .cards {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-right: 2em;
-      }
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 250px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+  overflow: hidden;
+}
 
-      .cards .card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        width: 250px;
-        border-radius: 10px;
-        color: #fff;
-        cursor: pointer;
-        transition: all 0.3s;
-        overflow: hidden;
-      }
+.red {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-      .cards .red {
-        background-color: rgba(0, 0, 0, 0.5);
-      }
+.blue {
+  background-color: rgba(0, 0, 0, 0.7);
+}
 
-      .cards .blue {
-        background-color: rgba(0, 0, 0, 0.7);
-      }
+.green {
+  background-color: rgba(0, 0, 0, 0.6);
+}
 
-      .cards .green {
-        background-color: rgba(0, 0, 0, 0.6);
-      }
+.card p {
+  margin: 10px;
+  word-wrap: break-word; /* Allow text to wrap */
+}
 
-      .cards .card p {
-        margin: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
+.card:hover {
+  transform: scale(1.1, 1.1);
+  height: auto;
+}
 
-      .cards .card:hover {
-        transform: scale(1.1, 1.1);
-        height: auto;
-      }
+.cards:hover > .card:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+}
 
-      .cards:hover > .card:not(:hover) {
-        filter: blur(10px);
-        transform: scale(0.9, 0.9);
-      }
+.card:hover p {
+  overflow: visible;
+  text-overflow: unset;
+  white-space: normal;
+}
 
-      .cards .card:hover p {
-        overflow: visible;
-        text-overflow: unset;
-        white-space: normal;
-      } 
 
-      .tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-      }
-    
-      .tooltip:hover::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        background-color: #333;
-        color: #fff;
-        padding: 8px;
-        border-radius: 4px;
-        z-index: 1;
-        bottom: 125%; /* Position the tooltip above the text */
-        left: 50%;
-        transform: translateX(-50%);
-        white-space: pre-line; /* Preserve line breaks */
-      }
+.button {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #34974d;
+  background-color: #3aa856;
+  border-radius:8px;
+  left: 60rem;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(30px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #34974d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:8px;
+}
+
+.button .svg {
+  width: 30px;
+  stroke: #fff;
+}
+
+.button:hover {
+  background: #34974d;
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active .button__icon {
+  background-color: #2e8644;
+}
+
+.button:active {
+  border: 1px solid #2e8644;
+}
