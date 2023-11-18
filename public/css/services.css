@@ -86,6 +86,22 @@ body {
 #next-btn:hover {
   background: #06f3a874;
 }
+#back-to-home-btn {
+  background: #119e71;
+  color: #ffffdd;
+  font-weight: 500;
+  font-size: 1em;
+  width: 150px;
+  border: 0;
+  padding: 10px;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+}
+#back-to-home-btn:hover {
+  background: #06f3a874;
+}
 
 /* meter-designing */
 .meter-container {
