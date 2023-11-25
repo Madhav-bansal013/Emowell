@@ -49,6 +49,33 @@ const botName = "ChatCord Bot";
 // Run when client connects
 io.on("connection", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
+    const roomsWithLimit = [
+      "Depression",
+      "AnxietyDisorders",
+      "BipolarDisorder",
+      "Schizophrenia",
+      "OCD",
+      "PTSD",
+      "EatingDisorders",
+      "ADHD",
+      "BPD",
+      "ASD",
+    ];
+
+    if (roomsWithLimit.includes(room)) {
+      const roomUsers = getRoomUsers(room);
+
+      if (roomUsers.length >= 2) {
+        // Emit a message to the user indicating that the room is full
+        socket.emit(
+          "message",
+          formatMessage(botName, "Sorry, this room is already full.")
+        );
+        return;
+      }
+    }
+    // Check if the room already has two users
+
     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);

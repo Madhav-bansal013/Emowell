@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/community.css" />
+    <title>EmoWell Chat-Community</title>
+  </head>
+  <body>
+    <div class="join-container">
+      <header class="join-header">
+        <h1>Em<i class="fas fa-smile"></i>Well Community</h1>
+      </header>
+      <main class="join-main">
+        <form action="communityChat.html">
+          <div class="form-control">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username..."
+              required
+            />
+          </div>
+          <div class="form-control">
+            <label for="room">Doctor and patients Community</label>
+            <select name="room" id="room">
+              <option value="Depression" class="opt">Depression</option>
+
+              <option value="AnxietyDisorders" class="opt">
+                Anxiety Disorders
+              </option>
+
+              <option value="BipolarDisorder" class="opt">
+                Bipolar Disorder
+              </option>
+
+              <option value="Schizophrenia" class="opt">Schizophrenia</option>
+
+              <option value="OCD" class="opt">
+                Obsessive-Compulsive Disorder (OCD)
+              </option>
+
+              <option value="PTSD" class="opt">
+                Post-Traumatic Stress Disorder (PTSD)
+              </option>
+
+              <option value="EatingDisorders" class="opt">
+                Eating Disorders
+              </option>
+
+              <option value="ADHD" class="opt">
+                Attention-Deficit/Hyperactivity Disorder (ADHD)
+              </option>
+
+              <option value="BPD" class="opt">
+                Borderline Personality Disorder (BPD)
+              </option>
+
+              <option value="ASD" class="opt">
+                Autism Spectrum Disorder (ASD)
+              </option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Join Chat</button>
+        </form>
+      </main>
+    </div>
+    <button
+      type="button"
+      class="home"
+      onclick="window.location.href = 'index.html';"
+    >
+      <span class="button__text">Back to</span>
+      <span class="button__icon">
+        <svg
+          style="color: white"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-house"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"
+            fill="white"
+          ></path>
+          <path
+            fill-rule="evenodd"
+            d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"
+            fill="white"
+          ></path>
+        </svg>
+      </span>
+    </button>
+  </body>
+</html>
