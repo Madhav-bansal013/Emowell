@@ -6,6 +6,17 @@ const StressLevel = require("./model/stressLevelModel");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const path = require("path");
+const http = require("http");
+const socketio = require("socket.io");
+// const { PythonShell } = require("python-shell");
+const formatMessage = require("./utils/messages");
+const {
+  userJoin,
+  getCurrentUser,
+  userLeave,
+  getRoomUsers,
+} = require("./utils/users");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -14,22 +25,29 @@ app.use("/", express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 
 ///////////////////////////
-const http = require("http");
-const socketio = require("socket.io");
-const formatMessage = require("./utils/messages");
-const {
-  userJoin,
-  getCurrentUser,
-  userLeave,
-  getRoomUsers,
-} = require("./utils/users");
+
+// let options = {
+//   mode: "text",
+//   // pythonOptions: ["-u"], // get print results in real-time
+//   // scriptPath: "path/to/my/scripts", //If you are having python_test.py script in same folder, then it's optional.
+//   // args: ["shubhamk314"], //An argument which can be accessed in the script using sys.argv[1]
+// };
+
+// PythonShell.run("app.py", options, function (err, result) {
+//   if (err) throw err;
+//   // result is an array consisting of messages collected
+//   //during execution of script.
+//   // console.log("result: ", result.toString());
+//   // res.send(result.toString());
+// });
+///////////////////////////
+
 const server = http.createServer(app);
 const io = socketio(server);
 const botName = "ChatCord Bot";
 
 // Run when client connects
 io.on("connection", (socket) => {
-  // console.log(io.of("/").adapter);
   socket.on("joinRoom", ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
 
