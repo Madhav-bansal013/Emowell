@@ -87,7 +87,9 @@ canvas {
 
 
 .button {
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  right: 0;
   width: 150px;
   height: 40px;
   cursor: pointer;
@@ -95,8 +97,8 @@ canvas {
   align-items: center;
   border: 1px solid #34974d;
   background-color: #3aa856;
-  border-radius:8px;
-  left: 60rem;
+  border-radius: 8px;
+  margin: 60px; /* Add margin as needed */
 }
 
 .button, .button__icon, .button__text {
@@ -118,7 +120,7 @@ canvas {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius:8px;
+  border-radius: 8px;
 }
 
 .button .svg {
@@ -145,4 +147,10 @@ canvas {
 
 .button:active {
   border: 1px solid #2e8644;
+}
+
+@media (max-width: 600px) {
+  .button {
+    display: none; /* Hide the button for screens less than 600px */
+  }
 }
