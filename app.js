@@ -8,9 +8,7 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 const http = require("http");
 const socketio = require("socket.io");
-const fs = require("fs");
-const brain = require("brain.js");
-// const { PythonShell } = require("python-shell");
+const spawner = require("child_process").spawn;
 const formatMessage = require("./utils/messages");
 const {
   userJoin,
@@ -25,24 +23,6 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from the 'public' directory
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
-
-///////////////////////////
-
-// let options = {
-//   mode: "text",
-//   // pythonOptions: ["-u"], // get print results in real-time
-//   // scriptPath: "path/to/my/scripts", //If you are having python_test.py script in same folder, then it's optional.
-//   // args: ["shubhamk314"], //An argument which can be accessed in the script using sys.argv[1]
-// };
-
-// PythonShell.run("app.py", options, function (err, result) {
-//   if (err) throw err;
-//   // result is an array consisting of messages collected
-//   //during execution of script.
-//   // console.log("result: ", result.toString());
-//   // res.send(result.toString());
-// });
-///////////////////////////
 
 const server = http.createServer(app);
 const io = socketio(server);
@@ -137,26 +117,12 @@ mongoose.connect(URI, {
   useUnifiedTopology: true,
 });
 
-const rawData = fs.readFileSync("output.json");
-const data = JSON.parse(rawData);
+const data_to_pass_in = ["Male", 20, 8, 8, 8, 8, 8];
 
-// Preprocess the data
-const trainingData = data.map((item) => ({
-  input: {
-    gender: item.Gender === "Male" ? 1 : 0,
-    age: item.Age / 28, // Normalize age
-    openness: item.openness / 9,
-    neuroticism: item.neuroticism / 9,
-    conscientiousness: item.conscientiousness / 9,
-    agreeableness: item.agreeableness / 9,
-    extraversion: item.extraversion / 9,
-  },
-  output: { [item["Personality (Class label)"]]: 1 },
-}));
-
-// Create and train the neural network
-const net = new brain.NeuralNetwork();
-net.train(trainingData);
+const py = spawner("python", ["./app.py", JSON.stringify(data_to_pass_in)]);
+py.stdout.on("data", (data) => {
+  console.log("received from python:", data.toString());
+});
 
 // Set up middleware
 app.use(bodyParser.urlencoded({ extended: true }));
