@@ -29,14 +29,10 @@ mul_lr = linear_model.LogisticRegression(
 )
 mul_lr.fit(mainarray, train_y)
 
-# inputdata = [
-#     sys.argv[1]
-# ]
+
 input_data_str = sys.argv[1]
 inputdata = [json.loads(input_data_str)]
-# input_data_str = sys.argv[1]
-# inputdata = json.loads(input_data_str)
-# print(inputdata)
+
 for i in range(len(inputdata)):
     if inputdata[i][0] == "Male":
         inputdata[i][0] = 1
