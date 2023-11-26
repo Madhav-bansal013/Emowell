@@ -247,7 +247,7 @@ li {
 
 /* .landing-section */
 .landing-section {
-  padding-top: 9rem;
+  padding-top: 4rem;
   height: 1000px;
   color: white;
   font-size: xx-large;
@@ -258,9 +258,10 @@ li {
   min-width: 300px;
 }
 .type {
-  font-family: monospace;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
   color: #0000;
-  letter-spacing: 0.15em; /* Adjust as needed */
+  letter-spacing: 0.15em;
   background: linear-gradient(-90deg, #ffffdd 5px, #0000 0) 10px 0,
     linear-gradient(#ffffdd 0 0) 0 0;
   background-size: calc(var(--n) * 1ch) 200%;

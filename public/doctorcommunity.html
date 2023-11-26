@@ -12,67 +12,79 @@
     />
     <link rel="stylesheet" href="css/community.css" />
     <title>EmoWell Chat-Community</title>
+    <style>
+      .Doc-community{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
   <body>
-    <div class="join-container">
-      <header class="join-header">
-        <h1>Em<i class="fas fa-smile"></i>Well Community</h1>
-      </header>
-      <main class="join-main">
-        <form action="communityChat.html">
-          <div class="form-control">
-            <label for="username">Username</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Enter username..."
-              required
-            />
-          </div>
-          <div class="form-control">
-            <label for="room">Doctor and patients Community</label>
-            <select name="room" id="room">
-              <option value="Depression" class="opt">Depression</option>
-
-              <option value="AnxietyDisorders" class="opt">
-                Anxiety Disorders
-              </option>
-
-              <option value="BipolarDisorder" class="opt">
-                Bipolar Disorder
-              </option>
-
-              <option value="Schizophrenia" class="opt">Schizophrenia</option>
-
-              <option value="OCD" class="opt">
-                Obsessive-Compulsive Disorder (OCD)
-              </option>
-
-              <option value="PTSD" class="opt">
-                Post-Traumatic Stress Disorder (PTSD)
-              </option>
-
-              <option value="EatingDisorders" class="opt">
-                Eating Disorders
-              </option>
-
-              <option value="ADHD" class="opt">
-                Attention-Deficit/Hyperactivity Disorder (ADHD)
-              </option>
-
-              <option value="BPD" class="opt">
-                Borderline Personality Disorder (BPD)
-              </option>
-
-              <option value="ASD" class="opt">
-                Autism Spectrum Disorder (ASD)
-              </option>
-            </select>
-          </div>
-          <button type="submit" class="btn">Join Chat</button>
-        </form>
-      </main>
+    <div class="Doc-community">
+      <div class="doc-imgz">
+        <img src="img/Doc.png" alt="img">
+      </div>
+      <div class="join-container">
+        <header class="join-header">
+          <h1>Em<i class="fas fa-smile"></i>Well Community</h1>
+        </header>
+        <main class="join-main">
+          <form action="communityChat.html">
+            <div class="form-control">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Enter username..."
+                required
+              />
+            </div>
+            <div class="form-control">
+              <label for="room">Doctor and patients Community</label>
+              <select name="room" id="room">
+                <option value="Depression" class="opt">Depression</option>
+  
+                <option value="AnxietyDisorders" class="opt">
+                  Anxiety Disorders
+                </option>
+  
+                <option value="BipolarDisorder" class="opt">
+                  Bipolar Disorder
+                </option>
+  
+                <option value="Schizophrenia" class="opt">Schizophrenia</option>
+  
+                <option value="OCD" class="opt">
+                  Obsessive-Compulsive Disorder (OCD)
+                </option>
+  
+                <option value="PTSD" class="opt">
+                  Post-Traumatic Stress Disorder (PTSD)
+                </option>
+  
+                <option value="EatingDisorders" class="opt">
+                  Eating Disorders
+                </option>
+  
+                <option value="ADHD" class="opt">
+                  Attention-Deficit/Hyperactivity Disorder (ADHD)
+                </option>
+  
+                <option value="BPD" class="opt">
+                  Borderline Personality Disorder (BPD)
+                </option>
+  
+                <option value="ASD" class="opt">
+                  Autism Spectrum Disorder (ASD)
+                </option>
+              </select>
+            </div>
+            <button type="submit" class="btn">Join Chat</button>
+          </form>
+        </main>
+      </div>
     </div>
     <button
       type="button"
