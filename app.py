@@ -49,6 +49,5 @@ for i in range(len(y_pred)):
 DF = pd.DataFrame(y_pred, columns=["Predicted Personality"])
 DF.index = DF.index + 1
 DF.index.names = ["Person No"]
-# per = DF["Predicted Personality"].tolist()[0]
-per = DF["Predicted Personality"].iloc[0]  # Corrected line
+per = DF["Predicted Personality"].iloc[0]  
 print(per)
