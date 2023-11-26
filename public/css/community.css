@@ -272,7 +272,7 @@ select {
 
 
 .home {
-	position: relative;
+	position: absolute;
 	width: 150px;
 	height: 40px;
 	cursor: pointer;
@@ -280,9 +280,11 @@ select {
 	align-items: center;
 	border: 1px solid #34974d;
 	background-color: #3aa856;
-	border-radius:8px;
-	left: 34rem;
-	margin-top: 1.5rem;
+	border-radius: 8px;
+	left: 50%;
+	transform: translateX(-50%);
+	/* top: calc(100% + 20px); Adjust the spacing as needed */
+	margin-top: 20px;
   }
   
   .home, .button__icon, .button__text {
@@ -304,7 +306,7 @@ select {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius:8px;
+	border-radius: 8px;
   }
   
   .home .svg {
@@ -332,7 +334,6 @@ select {
   .home:active {
 	border: 1px solid #2e8644;
   }
-
 /* @media (max-width: 700px) {
 	.chat-main {
 		display: block;

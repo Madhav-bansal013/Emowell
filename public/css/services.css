@@ -153,7 +153,7 @@ body {
 }
 
 .home {
-  position: relative;
+  position: absolute;
   width: 150px;
   height: 40px;
   cursor: pointer;
@@ -161,9 +161,10 @@ body {
   align-items: center;
   border: 1px solid #34974d;
   background-color: #3aa856;
-  border-radius:8px;
-  left: 34rem;
-  margin-top: 1.5rem;
+  border-radius: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20px; /* Add this line */
 }
 
 .home, .button__icon, .button__text {
@@ -185,7 +186,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius:8px;
+  border-radius: 8px;
 }
 
 .home .svg {
