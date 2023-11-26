@@ -8,8 +8,8 @@ const jwt = require("jsonwebtoken");
 const path = require("path");
 const http = require("http");
 const socketio = require("socket.io");
-const fs = require('fs');
-const brain = require('brain.js');
+const fs = require("fs");
+const brain = require("brain.js");
 // const { PythonShell } = require("python-shell");
 const formatMessage = require("./utils/messages");
 const {
@@ -137,13 +137,13 @@ mongoose.connect(URI, {
   useUnifiedTopology: true,
 });
 
-const rawData = fs.readFileSync('output.json');
+const rawData = fs.readFileSync("output.json");
 const data = JSON.parse(rawData);
 
 // Preprocess the data
-const trainingData = data.map(item => ({
+const trainingData = data.map((item) => ({
   input: {
-    gender: item.Gender === 'Male' ? 1 : 0,
+    gender: item.Gender === "Male" ? 1 : 0,
     age: item.Age / 28, // Normalize age
     openness: item.openness / 9,
     neuroticism: item.neuroticism / 9,
@@ -151,7 +151,7 @@ const trainingData = data.map(item => ({
     agreeableness: item.agreeableness / 9,
     extraversion: item.extraversion / 9,
   },
-  output: { [item['Personality (Class label)']]: 1 },
+  output: { [item["Personality (Class label)"]]: 1 },
 }));
 
 // Create and train the neural network
@@ -160,22 +160,20 @@ net.train(trainingData);
 
 // Set up middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, "public")));
 
 // Define routes
 // Define routes
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'personality_predictor.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "personality_predictor.html"));
 });
 
-
-app.post('/', (req, res) => {
+app.post("/", (req, res) => {
   const age = parseInt(req.body.age);
   const normalizedAge = Math.min(Math.max(age / 28, 0), 1);
 
   const input = {
-    gender: req.body.gender === 'Male' ? 1 : 0,
+    gender: req.body.gender === "Male" ? 1 : 0,
     age: normalizedAge,
     openness: (9 - parseInt(req.body.openness)) / 9,
     neuroticism: (9 - parseInt(req.body.neuroticism)) / 9,
@@ -185,12 +183,13 @@ app.post('/', (req, res) => {
   };
 
   const output = net.run(input);
-  const predictedPersonality = Object.keys(output).reduce((a, b) => (output[a] > output[b] ? a : b));
+  const predictedPersonality = Object.keys(output).reduce((a, b) =>
+    output[a] > output[b] ? a : b
+  );
 
   // Use res.send or res.json to send a response without rendering a view
   res.send(`Predicted Personality: ${predictedPersonality}`);
 });
-
 
 // Handle user login
 app.post("/api/login", async (req, res) => {
