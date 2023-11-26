@@ -1,6 +1,5 @@
 import sys
 import pandas as pd
-import ast
 import json
 from sklearn import linear_model
 
