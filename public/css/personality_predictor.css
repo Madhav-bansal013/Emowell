@@ -1,0 +1,202 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .w-full {
+    max-width: 100%;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .bg-#4298B4 {
+    background-color: #4298B4;
+  }
+  
+  .text-white {
+    color: white;
+  }
+  
+  .font-[Montserrat] {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .font-black {
+    font-weight: bold;
+  }
+  
+  .px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.875rem; /* 30px */
+  }
+  
+  .mt-28 {
+    margin-top: 7rem;
+  }
+  
+  .text-lg {
+    font-size: 1.125rem; /* 18px */
+  }
+  
+  .my-5 {
+    margin-top: 1.25rem; /* 20px */
+    margin-bottom: 1.25rem; /* 20px */
+  }
+  
+  .shadow-xl {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  
+  .bg-blue-400 {
+    background-color: #3182CE;
+  }
+  
+  .hover\:bg-blue-300:hover {
+    background-color: #63B3ED;
+  }
+  
+  .text-gray-700 {
+    color: #4A5568;
+  }
+  
+  .font-semibold {
+    font-weight: 600;
+  }
+  
+  .mb-14 {
+    margin-bottom: 3.5rem;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .px-10 {
+    padding-left: 2.5rem; /* 40px */
+    padding-right: 2.5rem; /* 40px */
+  }
+  
+  .font-black {
+    font-weight: bold;
+  }
+  
+  .mt-14 {
+    margin-top: 3.5rem;
+  }
+  
+  .font-bold {
+    font-weight: bold;
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .border-b-4 {
+    border-bottom-width: 0.25rem; /* 4px */
+  }
+  
+  .border-blue-500 {
+    border-color: #4299e1;
+  }
+  
+  .hover\:border-blue-400:hover {
+    border-color: #90cdf4;
+  }
+  
+  .rounded {
+    border-radius: 0.25rem; /* 4px */
+  }
+  
+  .focus\:outline-none:focus {
+    outline: none;
+  }
+  
+  .focus\:bg-white:focus {
+    background-color: white;
+  }
+  
+  .focus\:border-gray-500:focus {
+    border-color: #4A5568;
+  }
+  
+  .focus\:border-blue-500:focus {
+    border-color: #4299e1;
+  }
+  
+  .relative {
+    position: relative;
+  }
+  
+  .inset-y-0 {
+    top: 0;
+    bottom: 0;
+  }
+  
+  .right-0 {
+    right: 0;
+  }
+  
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  
+  .mx-3 {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+  
+  .mb-6 {
+    margin-bottom: 1.5rem; /* 24px */
+  }
+  
+  .mt-5 {
+    margin-top: 1.25rem; /* 20px */
+  }
+  
+  .mb-20 {
+    margin-bottom: 5rem;
+  }
+  
+  .fill-current {
+    fill: currentColor;
+  }
+  
+  .h-4 {
+    height: 1rem; /* 16px */
+  }
+  
+  .w-4 {
+    width: 1rem; /* 16px */
+  }
+  
