@@ -50,10 +50,10 @@ label {
   border: none;
   border-radius: 8px;
 }
-#leave-btn {
+#leave-btn,#leave {
   color: #d9534f;
 }
-#leave-btn:hover {
+#leave-btn:hover,#leave:hover {
   color: red;
 }
 #send-btn {

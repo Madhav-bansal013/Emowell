@@ -16,7 +16,7 @@
     <div class="chat-container">
       <header class="chat-header">
         <h1>Em<i class="fas fa-smile"></i>Well Community</h1>
-        <a id="leave-btnz" class="btn">Leave Room</a>
+        <a id="leave" class="btn" onclick="leaveChatroom()">Leave Room</a>
       </header>
       <main class="chat-main">
         <div class="chat-sidebar">
@@ -49,18 +49,15 @@
       crossorigin="anonymous"
     ></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="js/community.js"></script>
+    
     <script>
-      document.getElementById("leave-btnz").addEventListener("click", () => {
-        console.log("Leave button clicked");
-        const leaveRoom = confirm(
-          "Are you sure you want to leave the chatroom?"
-        );
+      function leaveChatroom() {
+        const leaveRoom = confirm("Are you sure you want to leave the chatroom?");
         if (leaveRoom) {
           window.location = "../doctorcommunity.html";
-        } else {
         }
-      });
+      }
     </script>
+    <script src="js/community.js"></script>
   </body>
 </html>
