@@ -7,8 +7,8 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const http = require("http");
-const socketio = require("socket.io");
 const spawner = require("child_process").spawn;
+const socketio = require("socket.io");
 const formatMessage = require("./utils/messages");
 const {
   userJoin,
@@ -19,16 +19,26 @@ const {
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-// Serve static files from the 'public' directory
 app.use("/", express.static(path.join(__dirname, "public")));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.json());
+
+const JWT_SECRET =
+  "sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk";
+
+// Connect to MongoDB
+const URI =
+  "mongodb+srv://siddraimb:XqIdW7BEAOEx6hyj@cluster0.us6nzjb.mongodb.net/minorRegisterdb?retryWrites=true&w=majority"; //connection string
+mongoose.connect(URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const server = http.createServer(app);
 const io = socketio(server);
 const botName = "ChatCord Bot";
 
-// Run when client connects
 io.on("connection", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
     const roomsWithLimit = [
@@ -106,56 +116,64 @@ io.on("connection", (socket) => {
   });
 });
 
-const JWT_SECRET =
-  "sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk";
+app.post("/api/predict", async (req, res) => {
+  try {
+    const {
+      gender,
+      age,
+      openness,
+      neuroticism,
+      conscientiousness,
+      agreeableness,
+      extraversion,
+    } = req.body;
 
-// Connect to MongoDB
-const URI =
-  "mongodb+srv://siddraimb:XqIdW7BEAOEx6hyj@cluster0.us6nzjb.mongodb.net/minorRegisterdb?retryWrites=true&w=majority"; //connection string
-mongoose.connect(URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+    const data_to_pass_in = [
+      gender,
+      age,
+      openness,
+      neuroticism,
+      conscientiousness,
+      agreeableness,
+      extraversion,
+    ];
+
+    // For example, spawn a child process to execute a Python script
+    const py = spawner("python", ["./app.py", JSON.stringify(data_to_pass_in)]);
+
+    let result = "";
+
+    py.stdout.on("data", (data) => {
+      result += data.toString();
+    });
+
+    py.on("close", (code) => {
+      if (code === 0) {
+        // Successfully executed
+        res.status(200).json({ result });
+      } else {
+        // Python script encountered an error
+        console.error("Python script execution failed.");
+        res.status(500).json({ error: "Internal server error." });
+      }
+    });
+  } catch (error) {
+    console.error("Error on server side:", error);
+    res.status(500).json({ error: "Internal server error." });
+  }
 });
-
-const data_to_pass_in = ["Male", 20, 8, 8, 8, 8, 8];
-
-const py = spawner("python", ["./app.py", JSON.stringify(data_to_pass_in)]);
-py.stdout.on("data", (data) => {
-  console.log("received from python:", data.toString());
-});
-
-// Set up middleware
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
 
 // Define routes
 // Define routes
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "personality_predictor.html"));
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname, "public", "personality_predictor.html"));
+// });
 
-app.post("/", (req, res) => {
-  const age = parseInt(req.body.age);
-  const normalizedAge = Math.min(Math.max(age / 28, 0), 1);
+// app.post("/", (req, res) => {
 
-  const input = {
-    gender: req.body.gender === "Male" ? 1 : 0,
-    age: normalizedAge,
-    openness: (9 - parseInt(req.body.openness)) / 9,
-    neuroticism: (9 - parseInt(req.body.neuroticism)) / 9,
-    conscientiousness: (9 - parseInt(req.body.conscientiousness)) / 9,
-    agreeableness: (9 - parseInt(req.body.agreeableness)) / 9,
-    extraversion: (9 - parseInt(req.body.extraversion)) / 9,
-  };
-
-  const output = net.run(input);
-  const predictedPersonality = Object.keys(output).reduce((a, b) =>
-    output[a] > output[b] ? a : b
-  );
-
-  // Use res.send or res.json to send a response without rendering a view
-  res.send(`Predicted Personality: ${predictedPersonality}`);
-});
+//   // Use res.send or res.json to send a response without rendering a view
+//   res.send(`Predicted Personality: ${predictedPersonality}`);
+// });
 
 // Handle user login
 app.post("/api/login", async (req, res) => {
@@ -221,8 +239,6 @@ app.post("/api/register", async (req, res) => {
 
   res.json({ status: "ok" });
 });
-
-// ...
 
 app.post("/api/savestresslevel", async (req, res) => {
   try {
