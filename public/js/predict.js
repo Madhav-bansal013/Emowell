@@ -76,7 +76,7 @@ async function predict(event) {
 
     // Display the result in the HTML element with the id "predict_result"
     const resultContainer = document.getElementById("predict_result");
-    resultContainer.innerHTML = `Your Personality: ${cleanedResult}`;
+    resultContainer.innerHTML = `Your Personality: ${cleanedResult}.`;
   } catch (error) {
     // Log and handle errors that occur during the prediction process
     console.error("Error:", error.message);
