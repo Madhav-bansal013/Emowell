@@ -35,6 +35,24 @@ mongoose.connect(URI, {
   useUnifiedTopology: true,
 });
 
+// Delete all entries from the User model
+// User.deleteMany({})
+//   .then((result) => {
+//     console.log('Deletion successful. Deleted documents:', result.deletedCount);
+//   })
+//   .catch((err) => {
+//     console.error('Error deleting entries:', err);
+//   });
+
+  // Delete all entries from the StressLevel model
+// StressLevel.deleteMany({})
+// .then((result) => {
+//   console.log('Deletion successful. Deleted documents:', result.deletedCount);
+// })
+// .catch((err) => {
+//   console.error('Error deleting entries:', err);
+// });
+
 const server = http.createServer(app);
 const io = socketio(server);
 const botName = "ChatCord Bot";
@@ -230,14 +248,18 @@ app.post("/api/register", async (req, res) => {
       email,
       password,
     });
+
+    res.json({ status: "ok" });
   } catch (error) {
     if (error.code === 11000) {
-      return res.json({ status: "error", error: "Username already in use" });
+      if (error.keyPattern && error.keyPattern.username) {
+        return res.json({ status: "error", error: "Username already in use" });
+      } else if (error.keyPattern && error.keyPattern.email) {
+        return res.json({ status: "error", error: "Email already in use" });
+      }
     }
     throw error;
   }
-
-  res.json({ status: "ok" });
 });
 
 app.post("/api/savestresslevel", async (req, res) => {
