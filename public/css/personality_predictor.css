@@ -1,4 +1,8 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 body {
+  font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,12 +11,30 @@ body {
   background-color: #618264;;
   color: #fff;
   overflow-y: scroll;
+  background: linear-gradient(-45deg, #4c5a1a, #a2c579, #016a70, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
 }
+
+/* Gradient animation keyframes */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px; 
-  max-width: 50%;
+  max-width: 35%;
   width: 100%;
   padding: 20px;
   border-radius: 20px;
@@ -56,24 +78,9 @@ body {
   background-color: #fff;
 }
 
-.message,
-.signin {
+.message {
   font-size: 14.5px;
   color: rgba(255, 255, 255, 0.7);
-}
-
-.signin {
-  text-align: center;
-}
-
-.signin a:hover {
-  text-decoration: underline #3aa856;
-}
-
-.flex {
-  display: flex;
-  width: 100%;
-  gap: 6px;
 }
 
 .form label {
@@ -91,7 +98,7 @@ body {
 }
 
 .form label .input + span {
-  color: green;
+  color:black;
   position: absolute;
   left: 10px;
   top: 0px;
@@ -115,22 +122,32 @@ body {
 
 .input {
   font-size: medium;
+  opacity: 0.7;
 }
 
-.submit {
+button {
   border: none;
   outline: none;
-  padding: 10px;
+  padding: 10px 10px ;
   border-radius: 10px;
-  color: black;
+  color: rgb(0, 0, 0);
   font-size: 16px;
   transform: 0.3s ease;
   background-color: #fff;
+  width: 100px;
+  opacity: 0.7;
+  margin: 20px;
+  transition: 0.3s;
+  text-transform: capitalize;
 }
 
-.submit:hover {
-  background-color: #618264;
-  color: #fff;
+.submit:hover,
+.home:hover {
+  background: #000000;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 0 17px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
 }
 
 @keyframes pulse {
@@ -157,6 +174,17 @@ body {
 
 .input {
   font-size: 16px;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+}
+/* button{
+  margin: 10px;
+} */
+
+.home{
+  width: auto;
 }
 
 @media (max-width: 600px) {
