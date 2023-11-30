@@ -4,7 +4,7 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
-  background-color: #618264;
+  background-color: #618264;;
   color: #fff;
   overflow-y: scroll;
 }
@@ -17,7 +17,7 @@ body {
   padding: 20px;
   border-radius: 20px;
   position: relative;
-  background-color: rgba(0, 128, 0, 0.304);
+  background-color: #2d37214d;
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
@@ -122,14 +122,15 @@ body {
   outline: none;
   padding: 10px;
   border-radius: 10px;
-  color: #fff;
+  color: black;
   font-size: 16px;
   transform: 0.3s ease;
-  background-color: darkgreen;
+  background-color: #fff;
 }
 
 .submit:hover {
-  background-color: green;
+  background-color: #618264;
+  color: #fff;
 }
 
 @keyframes pulse {
