@@ -195,6 +195,47 @@ li {
   background-color: rgba(0, 0, 0, 0.6);
   color: #ffffdd;
 }
+/* Add this CSS for the nested dropdown */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none; /* Hide the submenu by default */
+}
+
+/* Styling for the nested dropdown link */
+.dropdown-submenu > a:after {
+    content: " ▼";
+}
+
+/* Styling for the nested dropdown when open */
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block; /* Show the submenu on hover */
+}
+
+/* Adjustments to the original CSS */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: none; /* Hide the main dropdown menu by default */
+}
+
+.navbar-nav .dropdown:hover .dropdown-submenu .dropdown-menu {
+    display: none; /* Hide nested dropdowns by default */
+}
+
+.navbar-nav .dropdown:hover .dropdown-menu,
+.navbar-nav .dropdown:hover .dropdown-submenu:hover .dropdown-menu {
+    display: block; /* Show the main dropdown and nested dropdowns on hover */
+}
+
+/* Optional: Add space between dropdown items for better readability */
+.dropdown-menu .dropdown-item {
+    margin-right: 10px;
+}
+
 /* Underline animation */
 .navbar-nav .nav-link::before {
   content: "";
