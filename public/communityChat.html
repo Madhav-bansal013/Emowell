@@ -11,12 +11,65 @@
     />
     <link rel="stylesheet" href="css/community.css" />
     <title>ChatCord App</title>
+    <style>
+      .chat-container {
+        position: relative;
+      }
+
+      .confirmation-alert {
+        display: none;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fffdff;
+        border-radius: 12px;
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+        z-index: 10000;
+        transition: background-color 0.3s ease; /* Add transition for background-color */
+      }
+
+      .confirmation-alert p {
+        margin-bottom: 15px;
+      }
+
+      .confirmation-alert button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .confirmation-alert button.cancel-btn {
+        background-color: #f44336;
+        margin-left: 10px;
+      }
+
+      .confirmation-alert button:hover {
+        background-color: darkgreen;
+      }
+      .confirmation-alert button.cancel-btn:hover {
+        background-color: rgb(147, 9, 9);
+      }
+    </style>
   </head>
   <body>
     <div class="chat-container">
+      <div class="confirmation-alert" id="confirmation-alert">
+        <p>Are you sure you want to leave the chatroom?</p>
+        <button class="btn" onclick="handleConfirmation(true)">OK</button>
+        <button class="btn cancel-btn" onclick="handleConfirmation(false)">
+          Cancel
+        </button>
+      </div>
       <header class="chat-header">
         <h1>Em<i class="fas fa-smile"></i>Well Community</h1>
-        <a id="leave-btn" class="btn">Leave Room</a>
+        <a id="leave" class="btn" onclick="leaveChatroom()">Leave Room</a>
       </header>
       <main class="chat-main">
         <div class="chat-sidebar">
@@ -50,5 +103,20 @@
     ></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/community.js"></script>
+    <script>
+      function leaveChatroom() {
+        const confirmationAlert = document.getElementById("confirmation-alert");
+        confirmationAlert.style.display = "block";
+      }
+
+      function handleConfirmation(result) {
+        const confirmationAlert = document.getElementById("confirmation-alert");
+        confirmationAlert.style.display = "none";
+
+        if (result) {
+          window.location = "../community.html";
+        }
+      }
+    </script>
   </body>
 </html>
