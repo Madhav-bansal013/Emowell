@@ -12,13 +12,15 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px; 
-  max-width: 350px;
+  max-width: 50%;
+  width: 100%;
   padding: 20px;
   border-radius: 20px;
   position: relative;
   background-color: rgba(0, 128, 0, 0.304);
   color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .title {
@@ -154,4 +156,10 @@ body {
 
 .input {
   font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .form {
+    max-width: 100%; /* Adjust for smaller screens */
+  }
 }
