@@ -74,9 +74,27 @@ async function predict(event) {
     // Log the result received from the server
     console.log("Received from server:", cleanedResult);
 
-    // Display the result in the HTML element with the id "predict_result"
+    // ... (existing code)
+
+    // Display the result and show the "Read More" button
     const resultContainer = document.getElementById("predict_result");
     resultContainer.innerHTML = `Your Personality: ${cleanedResult}!`;
+
+    // Show the "Read More" button
+    const readMoreButton = document.getElementById("read_more_button");
+    readMoreButton.style.display = "block";
+
+    // ... (existing code)
+
+    // Add an event listener to the "Read More" button
+    readMoreButton.addEventListener("click", function () {
+      // Show the modal
+      $("#readMoreModal").modal("show");
+    });
+
+    // ... (existing code)
+
+    // ... (existing code)
   } catch (error) {
     // Log and handle errors that occur during the prediction process
     console.error("Error:", error.message);
