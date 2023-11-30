@@ -8,8 +8,8 @@
 }
 
 body {
-  background: #618264;
-  /* background: linear-gradient(-45deg, #4c5a1a, #a2c579, #016a70, #23d5ab); */
+  /* background: #618264; */
+  background: linear-gradient(-45deg, #4c5a1a, #a2c579, #016a70, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100vh;
@@ -328,6 +328,10 @@ select option:checked {
 
 .home:active {
   border: 1px solid #2e8644;
+}
+
+.Doc{
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 768px) {

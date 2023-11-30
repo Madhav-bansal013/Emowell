@@ -60,16 +60,16 @@ const botName = "ChatCord Bot";
 io.on("connection", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
     const roomsWithLimit = [
-      "Depression",
-      "AnxietyDisorders",
-      "BipolarDisorder",
-      "Schizophrenia",
-      "OCD",
-      "PTSD",
-      "EatingDisorders",
-      "ADHD",
-      "BPD",
-      "ASD",
+      "Dr.Smith",
+      "Dr.Johnson",
+      "Dr.Williams",
+      "Dr.Brown",
+      "Dr.Davis",
+      "Dr.Miller",
+      "Dr.Wilson",
+      "Dr.Taylor",
+      "Dr.Anderson",
+      "Dr.Thomas",
     ];
 
     if (roomsWithLimit.includes(room)) {
