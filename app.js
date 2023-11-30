@@ -232,7 +232,7 @@ app.post("/api/register", async (req, res) => {
     });
   } catch (error) {
     if (error.code === 11000) {
-      return res.json({ status: "error", error: "Username already in use" });
+      return res.json({ status: "error", error: "Email already in use" });
     }
     throw error;
   }
