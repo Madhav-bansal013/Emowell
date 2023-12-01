@@ -120,6 +120,7 @@ body {
   font-weight: 600;
 }
 
+
 .input {
   font-size: medium;
   opacity: 0.7;
@@ -139,6 +140,15 @@ button {
   margin: 20px;
   transition: 0.3s;
   text-transform: capitalize;
+}
+
+.home{
+ width: 130px;
+}
+.submit,.home{
+  margin-top: 2rem;
+  margin-left: 1rem;
+  border-radius: 12px;
 }
 
 .submit:hover,
@@ -165,7 +175,7 @@ button {
   background-color: #fffdffd3;
   color: black;
   width: 100%;
-  padding: 15px;
+  padding: 12px;
   outline: 0;
   border: 1px solid rgba(105, 105, 105, 0.397);
   border-radius: 10px;
@@ -178,14 +188,9 @@ button {
 .buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-/* button{
-  margin: 10px;
-} */
 
-.home {
-  width: auto;
-}
 
 /* Inside personality_predictor.css */
 #read_more_button {
@@ -201,16 +206,15 @@ button {
   background-color: #2980b9;
 }
 
-.popup {
-  position: relative;
-  bottom: 50%;
-  left: 10%;
-  z-index: 999;
-  background-color: #23d5ab;
-}
-
 @media (max-width: 600px) {
   .form {
-    max-width: 100%; /* Adjust for smaller screens */
+    max-width: 100%; 
   }
 }
+@media (min-width: 1000px) {
+  .form {
+    max-height: 900px;
+    margin-top: 7rem; 
+  }
+}
+
