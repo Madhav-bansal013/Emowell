@@ -80,7 +80,8 @@ function displayChart(labels, data) {
 
 async function fetchDataAndDisplayChart() {
   const loadingIndicator = document.getElementById("loadingIndicator");
-  loadingIndicator.textContent = "No data found, you haven't analysed your stess yet.";
+  loadingIndicator.textContent =
+    "No data found, you haven't analysed your stess yet.";
 
   const stressLevelData = await fetchStressLevelData();
   if (stressLevelData) {
