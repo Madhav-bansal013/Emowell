@@ -11,6 +11,15 @@ let stressScore = 0;
 
 const questions = [
   {
+    question: "You feel rested",
+    answers: [
+      { text: "Usually", score: 1 },
+      { text: "Often", score: 2 },
+      { text: "Sometimes", score: 3 },
+      { text: "Almost Never", score: 4 },
+    ],
+  },
+  {
     question: "You feel that too many demands are being made on you",
     answers: [
       { text: "Usually", score: 4 },
@@ -47,6 +56,24 @@ const questions = [
     ],
   },
   {
+    question: "You find yourself in situations of conflict",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You feel you're doing things you really like",
+    answers: [
+      { text: "Usually", score: 1 },
+      { text: "Often", score: 2 },
+      { text: "Sometimes", score: 3 },
+      { text: "Almost Never", score: 4 },
+    ],
+  },
+  {
     question: "You feel tired",
     answers: [
       { text: "Usually", score: 4 },
@@ -55,7 +82,6 @@ const questions = [
       { text: "Almost Never", score: 1 },
     ],
   },
-
   {
     question: "You fear you may not manage to attain your goals",
     answers: [
@@ -63,6 +89,15 @@ const questions = [
       { text: "Often", score: 3 },
       { text: "Sometimes", score: 2 },
       { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You feel calm",
+    answers: [
+      { text: "Usually", score: 1 },
+      { text: "Often", score: 2 },
+      { text: "Sometimes", score: 3 },
+      { text: "Almost Never", score: 4 },
     ],
   },
   {
@@ -84,6 +119,15 @@ const questions = [
     ],
   },
   {
+    question: "You are full of energy",
+    answers: [
+      { text: "Usually", score: 1 },
+      { text: "Often", score: 2 },
+      { text: "Sometimes", score: 3 },
+      { text: "Almost Never", score: 4 },
+    ],
+  },
+  {
     question: "You feel tense",
     answers: [
       { text: "Usually", score: 4 },
@@ -94,6 +138,142 @@ const questions = [
   },
   {
     question: "Your problems seem to be piling up",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You feel you're in a hurry",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You feel safe and protected",
+    answers: [
+      { text: "Usually", score: 1 },
+      { text: "Often", score: 2 },
+      { text: "Sometimes", score: 3 },
+      { text: "Almost Never", score: 4 },
+    ],
+  },
+  {
+    question: "You have many worries",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You are under pressure from other people",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You feel discouraged",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You enjoy yourself",
+    answers: [
+      { text: "Usually", score: 1 },
+      { text: "Often", score: 2 },
+      { text: "Sometimes", score: 3 },
+      { text: "Almost Never", score: 4 },
+    ],
+  },
+  {
+    question: "You are afraid for the future",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question:
+      "You feel you're doing things because you have to not because you want to",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You feel criticized or judged",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You are lighthearted",
+    answers: [
+      { text: "Usually", score: 1 },
+      { text: "Often", score: 2 },
+      { text: "Sometimes", score: 3 },
+      { text: "Almost Never", score: 4 },
+    ],
+  },
+  {
+    question: "You feel mentally exhausted",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You have trouble relaxing",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You feel loaded down with responsibility",
+    answers: [
+      { text: "Usually", score: 4 },
+      { text: "Often", score: 3 },
+      { text: "Sometimes", score: 2 },
+      { text: "Almost Never", score: 1 },
+    ],
+  },
+  {
+    question: "You have enough time for yourself",
+    answers: [
+      { text: "Usually", score: 1 },
+      { text: "Often", score: 2 },
+      { text: "Sometimes", score: 3 },
+      { text: "Almost Never", score: 4 },
+    ],
+  },
+  {
+    question: "You feel under pressure from deadlines",
     answers: [
       { text: "Usually", score: 4 },
       { text: "Often", score: 3 },
@@ -154,7 +334,7 @@ function handleNextBtn() {
 
 function showStressLevel() {
   resetstate();
-  const stressLevel = (stresslevel / (4 * 10)) * 100;
+  const stressLevel = (stresslevel / (4 * 30)) * 100;
   quesEl.innerHTML = "Your stress level: " + stressLevel.toFixed(2) + "%";
   // Get the user information from session storage
   const enteredUsername = sessionStorage.getItem("username");
