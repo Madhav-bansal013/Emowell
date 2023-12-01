@@ -194,17 +194,39 @@ button {
 
 /* Inside personality_predictor.css */
 #read_more_button {
-  margin-left: 9rem;
-  background-color: #3498db;
-  color: #fff;
+  margin-left: 35%; /* Use a relative unit for responsiveness */
   border: none;
-  border-radius: 4px;
+  outline: none;
+  padding: 10px 10px;
+  border-radius: 12px;
   cursor: pointer;
+  width: 25%; /* Set the button width to a percentage value */
+  max-width: 200px; /* Set a maximum width to prevent the button from becoming too wide on larger screens */
+  color: #000;
+  font-size: 16px;
+  transform: 0.2s ease;
+  /* background-color: #fff; */
+  opacity: 0.7;
+  transition: 0.2s;
+  text-transform: capitalize;
 }
 
 #read_more_button:hover {
-  background-color: #2980b9;
+  background: #000; /* Change background color to black on hover */
+  color: #fff;
+  transform: scale(1.04);
+  box-shadow: 0 0 17px rgba(0, 0, 0, 0.7);
+  font-weight: 300;
 }
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 600px) {
+  #read_more_button {
+    width: 100%; /* Adjust the button width for smaller screens */
+    margin-left: 0; /* Remove left margin for smaller screens if needed */
+  }
+}
+
 
 @media (max-width: 600px) {
   .form {
