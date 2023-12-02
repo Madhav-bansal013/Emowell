@@ -122,7 +122,7 @@ canvas {
   border: 1px solid #34974d;
   background-color: #3aa856;
   border-radius: 8px;
-  margin: 60px; /* Add margin as needed */
+  margin: 60px;
 }
 
 .button, .button__icon, .button__text {
@@ -175,6 +175,6 @@ canvas {
 
 @media (max-width: 600px) {
   .button {
-    display: none; /* Hide the button for screens less than 600px */
+    display: none;
   }
 }

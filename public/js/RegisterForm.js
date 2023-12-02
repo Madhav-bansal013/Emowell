@@ -49,10 +49,6 @@ async function registerUser(event) {
 
   // Check the registration result
   if (result.status === "ok") {
-    // Store login information in session storage
-    // sessionStorage.setItem("isLoggedIn", "true")
-    // sessionStorage.setItem("username", username);
-
     // Redirect to the index.html page
     window.location.href = "login.html";
   } else {

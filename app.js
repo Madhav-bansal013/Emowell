@@ -35,24 +35,6 @@ mongoose.connect(URI, {
   useUnifiedTopology: true,
 });
 
-// Delete all entries from the User model
-// User.deleteMany({})
-//   .then((result) => {
-//     console.log('Deletion successful. Deleted documents:', result.deletedCount);
-//   })
-//   .catch((err) => {
-//     console.error('Error deleting entries:', err);
-//   });
-
-// Delete all entries from the StressLevel model
-// StressLevel.deleteMany({})
-// .then((result) => {
-//   console.log('Deletion successful. Deleted documents:', result.deletedCount);
-// })
-// .catch((err) => {
-//   console.error('Error deleting entries:', err);
-// });
-
 const server = http.createServer(app);
 const io = socketio(server);
 const botName = "ChatCord Bot";
@@ -156,7 +138,6 @@ app.post("/api/predict", async (req, res) => {
       extraversion,
     ];
 
-    // For example, spawn a child process to execute a Python script
     const py = spawner("python", ["./app.py", JSON.stringify(data_to_pass_in)]);
 
     let result = "";
@@ -180,18 +161,6 @@ app.post("/api/predict", async (req, res) => {
     res.status(500).json({ error: "Internal server error." });
   }
 });
-
-// Define routes
-// Define routes
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "public", "personality_predictor.html"));
-// });
-
-// app.post("/", (req, res) => {
-
-//   // Use res.send or res.json to send a response without rendering a view
-//   res.send(`Predicted Personality: ${predictedPersonality}`);
-// });
 
 // Handle user login
 app.post("/api/login", async (req, res) => {

@@ -10,9 +10,8 @@
         background: linear-gradient(-45deg, #4c5a1a, #a2c579, #016a70, #23d5ab);
         background-size: 400% 400%;
         animation: gradient 10s ease infinite;
-        
       }
-      
+
       /* Gradient animation keyframes */
       @keyframes gradient {
         0% {
@@ -138,8 +137,8 @@
 
       .button {
         position: fixed;
-        bottom: 20px; /* Adjust the distance from the bottom as needed */
-        right: 20px; /* Adjust the distance from the right as needed */
+        bottom: 20px;
+        right: 20px;
         width: 150px;
         height: 40px;
         cursor: pointer;
@@ -149,8 +148,6 @@
         background-color: #3aa856;
         border-radius: 8px;
       }
-
-      /* Rest of your CSS remains unchanged */
 
       .button,
       .button__icon,
@@ -310,7 +307,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script>
       function backToHome() {
-        // Assuming your home page URL is "index.html"
         window.location.href = "index.html";
       }
       const reveal = gsap.utils.toArray(".reveal");

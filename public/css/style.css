@@ -195,7 +195,7 @@ li {
   background-color: rgba(0, 0, 0, 0.6);
   color: #ffffdd;
 }
-/* Add this CSS for the nested dropdown */
+
 .dropdown-submenu {
     position: relative;
 }
@@ -204,7 +204,7 @@ li {
     top: 0;
     left: 100%;
     margin-top: -1px;
-    display: none; /* Hide the submenu by default */
+    display: none; 
 }
 
 /* Styling for the nested dropdown link */
@@ -231,7 +231,7 @@ li {
     display: block; /* Show the main dropdown and nested dropdowns on hover */
 }
 
-/* Optional: Add space between dropdown items for better readability */
+
 .dropdown-menu .dropdown-item {
     margin-right: 10px;
 }
@@ -257,7 +257,6 @@ li {
 .navbar .navbar-nav .nav-link.nav-item:hover {
   color: #ffffdd !important;
 }
-/* CSS for decreasing navbar height */
 .navbar {
   transition: transform 0.7s ease-in-out;
 }
@@ -346,7 +345,7 @@ li {
   color: #ffffdd !important;
   font-weight: 300;
 }
-/* CSS for the new curved header section */
+
 .curved-header-section {
   position: relative;
   font-family: "Montserrat", sans-serif;
@@ -608,16 +607,7 @@ ul {
   padding: 0;
   margin: 0 !important;
 }
-/*Dialogflow-chatbot */
-df-messenger {
-  --df-messenger-bot-message: #878fac;
-  --df-messenger-button-titlebar-color: #a2c579;
-  --df-messenger-chat-background-color: #ffffdd;
-  --df-messenger-font-color: #ffffdd;
-  --df-messenger-send-icon: #a2c579;
-  --df-messenger-user-message: #479b3d;
-  --df-messenger-minimized-chat-close-icon-color: #479b3d;
-}
+
 #team {
   padding: 30px 0;
 }

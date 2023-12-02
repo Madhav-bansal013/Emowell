@@ -191,17 +191,15 @@ button {
   align-items: center;
 }
 
-
-/* Inside personality_predictor.css */
 #read_more_button {
-  margin-left: 35%; /* Use a relative unit for responsiveness */
+  margin-left: 35%; 
   border: none;
   outline: none;
   padding: 10px 10px;
   border-radius: 12px;
   cursor: pointer;
-  width: 25%; /* Set the button width to a percentage value */
-  max-width: 200px; /* Set a maximum width to prevent the button from becoming too wide on larger screens */
+  width: 25%; 
+  max-width: 200px; 
   color: #000;
   font-size: 16px;
   transform: 0.2s ease;
@@ -219,11 +217,10 @@ button {
   font-weight: 300;
 }
 
-/* Media Query for smaller screens */
 @media screen and (max-width: 600px) {
   #read_more_button {
-    width: 100%; /* Adjust the button width for smaller screens */
-    margin-left: 0; /* Remove left margin for smaller screens if needed */
+    width: 100%; 
+    margin-left: 0; 
   }
 }
 

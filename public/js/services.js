@@ -372,7 +372,7 @@ function showStressLevel() {
   meterContainer.style.display = "block"; // Display the meter container
 
   // Apply the animation class
-  meterFill.style.animation = "fillMeter 2s ease-in-out forwards"; // Adjust the duration as needed
+  meterFill.style.animation = "fillMeter 2s ease-in-out forwards";
 }
 
 nextBtn.addEventListener("click", () => {
